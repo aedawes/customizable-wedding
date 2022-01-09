@@ -12,6 +12,7 @@ I am going to create a website that is a customizable resource for newly engaged
 - Address_1 updated
 - Address_2 updated
 - Registry link added
+- Registry link deleted
 - Guest added to list
 - Guest deleted from list
 
@@ -25,6 +26,7 @@ I am going to create a website that is a customizable resource for newly engaged
 - Update Address_1
 - Update Address_2
 - Create registry link
+- Delete registry link
 - Add guest to list
 - Delete guest from list
 
@@ -47,3 +49,19 @@ I am going to create a website that is a customizable resource for newly engaged
 ## Value Object
 **File**
 - Data (The data of the files for photo uploads)
+
+# REST Design
+| Description | URL Fragment | HTTP Method | Path Parameters | Representations |
+| ----------- | ------------ | ----------- | --------------- | --------------- |
+| create account | `/accounts` | POST | | Create Account |
+| delete account | `/accounts/{accountId}` | DELETE | `accountId` | |
+| log in | `/accounts/{accountId}/login` | PUT | `accountId` | Account Log In |
+| log out | `/accounts/{accountId}/logout` | PUT | `accountId` | |
+| upload photo | `/form/photo` | POST | | placeholder|
+| update couple's name | `/form/couple_name` | PUT | | placeholder |
+| update address 1 | `/form/Address_2` | PUT | | placeholder |
+| create registry link | `/form/registry_link` | POST |  | placeholder |
+| delete registry link | `/form/registry_link` | DELETE |  | placeholder
+| Add guest to list | `/form/RSVP/{guestID}` | POST | `guestId` | placeholder |
+| delete guest from list | `/tasks/RSVP/{guestId}` | DELETE | `guestId` | placeholder |
+| delete file from task | `/tasks/{taskId}/files/{fileId}` | DELETE | `taskId`, `fileId` |
