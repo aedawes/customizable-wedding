@@ -2,7 +2,7 @@
 I am going to create a website that is a customizable resource for newly engaged couples who are planning a wedding.  It will handle RSVPs, have registry links, and allow the couple to add their own photos and addresses for venues.  All the user will need to do is create an account and fill in some fields and photos and they will be able to reference the RSVP list. 
 
 # Domain Driven Design
-##Events
+## Events
 - User Logged in 
 - User logged out
 - User account created
@@ -15,7 +15,7 @@ I am going to create a website that is a customizable resource for newly engaged
 - Guest added to list
 - Guest deleted from list
 
-##Commands
+# #Commands
 - Create user account
 - Delete user account
 - Login user
@@ -28,7 +28,7 @@ I am going to create a website that is a customizable resource for newly engaged
 - Add guest to list
 - Delete guest from list
 
-##Entities
+## Entities
 **Account**
 - User id (unique and defined by user)
 - Name (What the user would like to be called)
@@ -44,6 +44,6 @@ I am going to create a website that is a customizable resource for newly engaged
 - Registry link (Name and link to registry)
 
 
-##Value Object
+## Value Object
 **File**
 - Data (The data of the files for photo uploads)
