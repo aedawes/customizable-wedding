@@ -36,6 +36,7 @@ I am going to create a website that is a customizable resource for newly engaged
 - Name (What the user would like to be called)
 - Password (encrypted passwords)
 - Session info (info about whether they are logged in)
+
 **Form**
 - Couple's names (The names to be displayed on the main page; not unique)
 - Couple photo 1 (Photo to be displayed behind couple's name)
@@ -44,7 +45,6 @@ I am going to create a website that is a customizable resource for newly engaged
 - Address 2 (The name and location of the reception)
 - Venue photo 2 (Photo of the reception venue)
 - Registry link (Name and link to registry)
-
 
 ## Value Object
 **File**
