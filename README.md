@@ -57,11 +57,10 @@ I am going to create a website that is a customizable resource for newly engaged
 | delete account | `/accounts/{accountId}` | DELETE | `accountId` | |
 | log in | `/accounts/{accountId}/login` | PUT | `accountId` | Account Log In |
 | log out | `/accounts/{accountId}/logout` | PUT | `accountId` | |
-| upload photo | `/form/photo` | POST | | placeholder|
-| update couple's name | `/form/couple_name` | PUT | | placeholder |
-| update address | `/form/Address_2` | PUT | | placeholder |
-| create registry link | `/form/registry_link` | POST |  | placeholder |
-| delete registry link | `/form/registry_link` | DELETE |  | placeholder
-| Add guest to list | `/form/RSVP/{guestID}` | POST | `guestId` | placeholder |
-| delete guest from list | `/tasks/RSVP/{guestId}` | DELETE | `guestId` | placeholder |
-| delete file from task | `/tasks/{taskId}/files/{fileId}` | DELETE | `taskId`, `fileId` |
+| upload photo | `/form/photo` | PUT | | placeholder|
+| update couple's name | `/form` | PUT | | placeholder |
+| update address | `/form` | PUT | | placeholder |
+| create registry link | `/form` | POST |  | placeholder |
+| delete registry link | `/form` | DELETE |  | placeholder
+| Add guest to list | `/form/{guestID}` | POST | `guestId` | placeholder |
+| delete guest from list | `/form/{guestId}` | DELETE | `guestId` | placeholder |
