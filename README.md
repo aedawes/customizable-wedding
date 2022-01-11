@@ -59,7 +59,7 @@ I am going to create a website that is a customizable resource for newly engaged
 | log out | `/accounts/{accountId}/logout` | PUT | `accountId` | |
 | upload photo | `/form/photo` | POST | | placeholder|
 | update couple's name | `/form/couple_name` | PUT | | placeholder |
-| update address 1 | `/form/Address_2` | PUT | | placeholder |
+| update address | `/form/Address_2` | PUT | | placeholder |
 | create registry link | `/form/registry_link` | POST |  | placeholder |
 | delete registry link | `/form/registry_link` | DELETE |  | placeholder
 | Add guest to list | `/form/RSVP/{guestID}` | POST | `guestId` | placeholder |
