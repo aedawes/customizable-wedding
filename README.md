@@ -57,10 +57,20 @@ I am going to create a website that is a customizable resource for newly engaged
 | delete account | `/accounts/{accountId}` | DELETE | `accountId` | |
 | log in | `/accounts/{accountId}/login` | PUT | `accountId` | Account Log In |
 | log out | `/accounts/{accountId}/logout` | PUT | `accountId` | |
-| upload photo | `/form/photo` | PUT | | placeholder|
+| upload photo | `/form/{photoID}` | PUT | `photoID` | placeholder|
 | update couple's name | `/form` | PUT | | placeholder |
 | update address | `/form` | PUT | | placeholder |
 | create registry link | `/form` | POST |  | placeholder |
 | delete registry link | `/form` | DELETE |  | placeholder
 | Add guest to list | `/form/{guestID}` | POST | `guestId` | placeholder |
 | delete guest from list | `/form/{guestId}` | DELETE | `guestId` | placeholder |
+
+# Representation
+
+### Account Log in
+
+```json
+{
+  "password": "a-password"
+}
+```
