@@ -9,8 +9,7 @@ I am going to create a website that is a customizable resource for newly engaged
 - User account deleted
 - Photo uploaded
 - Couple_name updated
-- Address_1 updated
-- Address_2 updated
+- Address updated
 - Registry link added
 - Registry link deleted
 - Guest added to list
@@ -23,8 +22,7 @@ I am going to create a website that is a customizable resource for newly engaged
 - Logout user
 - Upload photo
 - Update Couple_name
-- Update Address_1
-- Update Address_2
+- Update Address
 - Create registry link
 - Delete registry link
 - Add guest to list
@@ -74,3 +72,27 @@ I am going to create a website that is a customizable resource for newly engaged
   "password": "a-password"
 }
 ```
+
+### Create Account
+```json
+{
+  "username" : "username",
+  "name" : "First Name",
+  "password" : "a-password"
+}
+```
+
+### Form
+```json
+{
+  "coupleName" : "The Couple's Names",
+  "couplePhoto1" : "photoOfCouple",
+  "Address1" : "ceremonyAddress",
+  "venuePhoto1" : "photoOfCeremony",
+  "Address2" : "receptionAddress",
+  "venuePhoto2" : "photoOfReception",
+  "registryLink" : "Registry Link"
+}
+```
+### File
+<img src="couplePhoto1">
