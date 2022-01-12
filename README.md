@@ -95,4 +95,4 @@ I am going to create a website that is a customizable resource for newly engaged
 }
 ```
 ### File
-<img src="couplePhoto1.png">
+<img src="CouplePhoto1.png"/>
