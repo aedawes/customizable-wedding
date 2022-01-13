@@ -44,6 +44,9 @@ I am going to create a website that is a customizable resource for newly engaged
 - Venue photo 2 (Photo of the reception venue)
 - Registry link (Name and link to registry)
 
+**Guests**
+- Guest's full name (Name of the guest to be added)
+
 ## Value Object
 **File**
 - Data (The data of the files for photo uploads)
@@ -56,8 +59,8 @@ I am going to create a website that is a customizable resource for newly engaged
 | log in | `/accounts/{accountId}/login` | PUT | `accountId` | Account Log In |
 | log out | `/accounts/{accountId}/logout` | PUT | `accountId` | |
 | update form | `/forms` | PUT | | Update Form |
-| Add guest to list | `/guests/{accountId}/{guestId}` | POST |  `accountId` `guestId`  | placeholder |
-| delete guest from list | `/guests/{accountId}/{guestId}` | DELETE | `accountId` `guestId` | placeholder |
+| Add guest to list | `/guests/{accountId}/{guestId}` | POST |  `accountId` `guestId`  | Add Guest to List |
+| delete guest from list | `/guests/{accountId}/{guestId}` | DELETE | `accountId` `guestId` | |
 
 # Representation
 
@@ -78,18 +81,15 @@ I am going to create a website that is a customizable resource for newly engaged
   "password" : "a-password"
 }
 ```
+### Add Guest to List
+```json
+{
+  "Guest name" : "GuestFullName"
+}
 
 ### Form
 ```json
 {
   "coupleName" : "The Couple's Names",
-  "couplePhoto1" : "photoOfCouple",
-  "Address1" : "ceremonyAddress",
-  "venuePhoto1" : "photoOfCeremony",
-  "Address2" : "receptionAddress",
-  "venuePhoto2" : "photoOfReception",
-  "registryLink" : "Registry Link"
-}
-```
 ### File
 <img src="CouplePhoto1.png"/>
