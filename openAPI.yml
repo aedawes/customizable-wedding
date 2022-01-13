@@ -33,17 +33,61 @@ paths:
         201:
           description: Account created
   /accounts/{accountId}:
-      parameters:
-        - name: accountId
-          in : path
-          required: true
-          schema: 
-            type: string
-      delete:
-        tags: 
-          - Accounts
-        summary: Delete an account.
-        responses:
-          204:
-            description: Account deleted
-            
+    parameters:
+      - name: accountId
+        in : path
+        required: true
+        schema: 
+          type: string
+    delete:
+      tags: 
+        - Accounts
+      summary: Delete an account.
+      responses:
+        204:
+          description: Account deleted
+  /accounts/{accountId}/login:
+    parameters:
+      - name: accountId
+        in : path
+        required: true
+        schema: 
+          type: string
+    put: 
+      tags:
+        - Accounts
+      summary: Log into an account
+      requestBody:
+        required: true
+        content: 
+          application/json:
+            schema:
+              type: object
+              required:
+                - username
+                - password
+              properties:
+                username: 
+                  type: string
+                password: 
+                  type: string
+            example: 
+              username: aedawes
+              password: secretPassword
+      responses:
+        200:
+          description: User is logged in
+  /accounts/{accountId}/logout:
+    parameters:
+      - name: accountId
+        in: path
+        required: true
+        schema:
+          type: string
+    put:
+      tags:
+        - Accounts
+      summary: Log out of an account
+      responses:
+        205:
+          description: User is logged out
