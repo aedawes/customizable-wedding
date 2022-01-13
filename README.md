@@ -59,7 +59,7 @@ I am going to create a website that is a customizable resource for newly engaged
 | log in | `/accounts/{accountId}/login` | PUT | `accountId` | Account Log In |
 | log out | `/accounts/{accountId}/logout` | PUT | `accountId` | |
 | update form | `/forms` | PUT | | Update Form |
-| Add guest to list | `/guests/{accountId}/{guestId}` | POST |  `accountId` `guestId`  | Add Guest to List |
+| add guest to list | `/guests/{accountId}/{guestId}` | POST |  `accountId` `guestId`  | Add Guest to List |
 | delete guest from list | `/guests/{accountId}/{guestId}` | DELETE | `accountId` `guestId` | |
 
 # Representation
@@ -84,7 +84,7 @@ I am going to create a website that is a customizable resource for newly engaged
 ### Add Guest to List
 ```json
 {
-  "Guest name" : "GuestFullName"
+  "guestName" : "GuestFullName"
 }
 
 ### Form
