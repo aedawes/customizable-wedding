@@ -86,10 +86,14 @@ I am going to create a website that is a customizable resource for newly engaged
 {
   "guestName" : "GuestFullName"
 }
+```
 
 ### Form
 ```json
 {
   "coupleName" : "The Couple's Names",
+}
+```
+
 ### File
 <img src="CouplePhoto1.png"/>
