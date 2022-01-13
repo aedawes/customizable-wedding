@@ -1,0 +1,49 @@
+openapi: 3.0.3
+info:
+  title: Cutomizable Wedding Web App
+  version: v1
+paths:
+  /accounts:
+    post:
+      tags:
+        - Accounts
+      summary: Create an account
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - username
+                - name
+                - password
+              properties:
+                username:
+                  type: string
+                name: 
+                  type: string
+                password:
+                  type: string
+            example:
+              username: aedawes
+              name: Anais
+              password: secretPassword
+      responses:
+        201:
+          description: Account created
+  /accounts/{accountId}:
+      parameters:
+        - name: accountId
+          in : path
+          required: true
+          schema: 
+            type: string
+      delete:
+        tags: 
+          - Accounts
+        summary: Delete an account.
+        responses:
+          204:
+            description: Account deleted
+            
