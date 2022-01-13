@@ -69,6 +69,7 @@ I am going to create a website that is a customizable resource for newly engaged
 
 ```json
 {
+  "username" : "username"
   "password": "a-password"
 }
 ```
