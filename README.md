@@ -68,7 +68,7 @@ I am going to create a website that is a customizable resource for newly engaged
 
 ```json
 {
-  "username" : "username"
+  "username" : "username",
   "password": "a-password"
 }
 ```
@@ -84,7 +84,7 @@ I am going to create a website that is a customizable resource for newly engaged
 ### Add Guest to List
 ```json
 {
-  "guestName" : "GuestFullName"
+  "guestName" : "GuestFullName",
   "email" : "guestEmail"
 }
 ```
@@ -93,6 +93,13 @@ I am going to create a website that is a customizable resource for newly engaged
 ```json
 {
   "coupleName" : "The Couple's Names",
+  "couplePhotoOne" : "Photo of couple",
+  "AddressOne" : "Ceremony Name and Address",
+  "AddressOnePhoto" : "Photo of ceremony venue",
+  "AddressTwo" : "Reception Name and Address",
+  "AddressTwoPhoto" : "Photo of Reception venue",
+  "couplePhotoTwo" : "Second photo of couple"
+  "AddRegistryLink" : "Add a registry link"
 }
 ```
 
