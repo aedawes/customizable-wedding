@@ -91,3 +91,86 @@ paths:
       responses:
         205:
           description: User is logged out
+  /forms:
+    put:
+      tags:
+        - Forms
+      summary: Update the form
+      requestBody:
+        required: true
+        content: 
+          application/json:
+            schema:
+              type: object
+              required:
+                - coupleName
+                - couplePhotoOne
+                - addressOne
+                - addressOnePhoto
+                - addressTwo
+                - addressTwoPhoto
+                - couplePhotoTwo
+                - addRegistryLink
+              properties:
+                coupleName: 
+                  type: string
+                couplePhotoOne: 
+                  type: object
+                addressOne:
+                  type: string
+                addressOnePhoto:
+                  type: object
+                addressTwo:
+                  type: string
+                addressTwoPhoto:
+                  type: object
+                couplePhotoTwo:
+                  type: object
+                addRegistryLink:
+                  type: string
+            example: 
+              coupleName: John, Sarah, Smith
+              couplePhotoOne: placeholder
+              addressOne: The venue, 123 Sesame st
+              addressTwo: The venue, 456 hilltop rd
+              addRegistryLink: www.website.com/ourRegistry
+      responses:
+        200:
+          description: Form successfully updated
+  /guests/{accountId}/addGuest:
+    parameters:
+      - name: accountId
+        in : path
+        required: true
+        schema: 
+          type: string
+      - name: guestId
+        in: query
+        schema:
+          type: string
+    delete:
+      tags: 
+        - Guests
+      summary: Add a guest to the list
+      responses:
+        200:
+          description: Guest successfully added to the list
+  /guests/{accountId}/deleteGuest:
+    parameters:
+      - name: accountId
+        in : path
+        required: true
+        schema: 
+          type: string
+      - name: guestId
+        in: query
+        schema:
+          type: string
+    delete:
+      tags: 
+        - Guests
+      summary: Delete an account.
+      responses:
+        204:
+          description: Guest deleted
+        
