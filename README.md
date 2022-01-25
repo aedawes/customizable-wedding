@@ -58,8 +58,11 @@ I am going to create a website that is a customizable resource for newly engaged
 | delete account | `/accounts/{accountId}` | DELETE | `accountId` | |
 | log in | `/accounts/{accountId}/login` | PUT | `accountId` | Account Log In |
 | log out | `/accounts/{accountId}/logout` | PUT | `accountId` | |
+| get form | `/forms` | GET | | |
 | update form | `/forms` | PUT | | Update Form |
+| get home | `/home` | GET | | Get the Home Page |
 | add guest to list | `/guests/{accountId}/addGuest` | PUT |  `accountId` `guestId`  | Add Guest to List |
+| get guest list | `/guests` | GET | | Get the Guest List |
 | delete guest from list | `/guests/{accountId}/deleteGuest` | DELETE | `accountId` `guestId` | |
 
 # Representation
@@ -81,6 +84,7 @@ I am going to create a website that is a customizable resource for newly engaged
   "password" : "a-password"
 }
 ```
+
 ### Add Guest to List
 ```json
 {
@@ -89,7 +93,7 @@ I am going to create a website that is a customizable resource for newly engaged
 }
 ```
 
-### Form
+### Update Form
 ```json
 {
   "coupleName" : "The Couple's Names",
@@ -100,6 +104,26 @@ I am going to create a website that is a customizable resource for newly engaged
   "AddressTwoPhoto" : "Photo of Reception venue",
   "couplePhotoTwo" : "Second photo of couple"
   "AddRegistryLink" : "Add a registry link"
+}
+```
+### Get Home
+```json
+{
+  "coupleName" : "The Couple's Names",
+  "couplePhotoOne" : "Photo of couple",
+  "AddressOne" : "Ceremony Name and Address",
+  "AddressOnePhoto" : "Photo of ceremony venue",
+  "AddressTwo" : "Reception Name and Address",
+  "AddressTwoPhoto" : "Photo of Reception venue",
+  "couplePhotoTwo" : "Second photo of couple"
+  "AddRegistryLink" : "Add a registry link"
+}
+```
+### Get Guestlist
+```json
+{
+  "guestName" : "GuestFullName",
+  "email" : "guestEmail"
 }
 ```
 
