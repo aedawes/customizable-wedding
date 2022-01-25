@@ -58,7 +58,6 @@ I am going to create a website that is a customizable resource for newly engaged
 | delete account | `/accounts/{accountId}` | DELETE | `accountId` | |
 | log in | `/accounts/{accountId}/login` | PUT | `accountId` | Account Log In |
 | log out | `/accounts/{accountId}/logout` | PUT | `accountId` | |
-| get form | `/forms` | GET | | |
 | update form | `/forms` | PUT | | Update Form |
 | get home | `/home` | GET | | Get the Home Page |
 | add guest to list | `/guests/{accountId}/addGuest` | PUT |  `accountId` `guestId`  | Add Guest to List |
