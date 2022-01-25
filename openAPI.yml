@@ -99,7 +99,7 @@ paths:
       requestBody:
         required: true
         content: 
-          application/json:
+          multipart/form-data:
             schema:
               type: object
               required:
@@ -107,32 +107,37 @@ paths:
                 - couplePhotoOne
                 - addressOne
                 - addressOnePhoto
-                - addressTwo
-                - addressTwoPhoto
                 - couplePhotoTwo
                 - addRegistryLink
               properties:
                 coupleName: 
                   type: string
                 couplePhotoOne: 
-                  type: object
+                  type: string
+                  format: byte
                 addressOne:
                   type: string
                 addressOnePhoto:
-                  type: object
+                  type: string
+                  format: byte
                 addressTwo:
                   type: string
                 addressTwoPhoto:
-                  type: object
+                  type: string
+                  format: byte
                 couplePhotoTwo:
-                  type: object
+                  type: string
+                  format: byte
                 addRegistryLink:
                   type: string
             example: 
               coupleName: John, Sarah, Smith
-              couplePhotoOne: placeholder
+              couplePhotoOne: UGxhY2Vob2xkZXIK
               addressOne: The venue, 123 Sesame st
+              addressOnePhoto: UGxhY2Vob2xkZXIK
               addressTwo: The venue, 456 hilltop rd
+              addressTwoPhoto: UGxhY2Vob2xkZXIK
+              couplePhotoTwo: UGxhY2Vob2xkZXIK
               addRegistryLink: www.website.com/ourRegistry
       responses:
         200:
