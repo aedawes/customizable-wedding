@@ -91,6 +91,26 @@ paths:
       responses:
         205:
           description: User is logged out
+  /{accountId}:
+    parameters:
+      - $ref: '#/components/parameters/PathAccountId'
+    get:
+      tags:
+        - Accounts
+      summary: Get the home page
+      responses:
+        200:
+          description: Home page loaded.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Home'
+        401:
+          description: Not authenticated.
+        403:
+          description: Access denied.
+        404:
+          description: No page found.
   /forms:
     put:
       tags:
@@ -101,35 +121,7 @@ paths:
         content: 
           multipart/form-data:
             schema:
-              type: object
-              required:
-                - coupleName
-                - couplePhotoOne
-                - addressOne
-                - addressOnePhoto
-                - couplePhotoTwo
-                - addRegistryLink
-              properties:
-                coupleName: 
-                  type: string
-                couplePhotoOne: 
-                  type: string
-                  format: byte
-                addressOne:
-                  type: string
-                addressOnePhoto:
-                  type: string
-                  format: byte
-                addressTwo:
-                  type: string
-                addressTwoPhoto:
-                  type: string
-                  format: byte
-                couplePhotoTwo:
-                  type: string
-                  format: byte
-                addRegistryLink:
-                  type: string
+              $ref: '#/components/schemas/Home'
             example: 
               coupleName: John, Sarah, Smith
               couplePhotoOne: UGxhY2Vob2xkZXIK
@@ -141,7 +133,38 @@ paths:
               addRegistryLink: www.website.com/ourRegistry
       responses:
         200:
-          description: Form successfully updated
+          description: Task succesfully updated.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Home'
+        401:
+          description: Not authenticated.
+        403:
+          description: Access denied.
+  /guests:
+      parameters:
+        - name: guestId
+          in: query
+          schema:
+            type: string
+      get:
+        tags:
+          - Guests
+        summary: Get the guest list
+        responses:
+          200:
+            description: Guest list loaded.
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/Guests'
+          401:
+            description: Not authenticated.
+          403:
+            description: Access denied.
+          404:
+            description: No page found.
   /guests/{accountId}/addGuest:
     parameters:
       - name: accountId
@@ -160,6 +183,14 @@ paths:
       responses:
         200:
           description: Guest successfully added to the list
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Guests'
+        401:
+          description: Not authenticated.
+        403:
+          description: Access denied.
   /guests/{accountId}/deleteGuest:
     parameters:
       - name: accountId
@@ -178,4 +209,50 @@ paths:
       responses:
         204:
           description: Guest deleted
-        
+            
+components:
+  parameters:
+    PathAccountId:
+      name: accountId
+      in: path
+      required: true
+      schema:
+        type: string
+  schemas:
+    Home:
+      type: object
+      required:
+        - coupleName
+        - couplePhotoOne
+        - addressOne
+        - addressOnePhoto
+        - couplePhotoTwo
+        - addRegistryLink
+      properties:
+        coupleName: 
+          type: string
+        couplePhotoOne: 
+          type: string
+          format: byte
+        addressOne:
+          type: string
+        addressOnePhoto:
+          type: string
+          format: byte
+        addressTwo:
+          type: string
+        addressTwoPhoto:
+          type: string
+          format: byte
+        couplePhotoTwo:
+          type: string
+          format: byte
+        addRegistryLink:
+          type: string
+    Guests:
+      type: object
+      properties:
+        guestName: 
+          type: string
+        guestEmail:
+          type: string
