@@ -1,0 +1,25 @@
+{
+  "name": "customizable-wedding",
+  "version": "1.0.0",
+  "description": "I am going to create a website that is a customizable resource for newly engaged couples who are planning a wedding.  It will handle RSVPs, have registry links, and allow the couple to add their own photos and addresses for venues.  All the user will need to do is create an account and fill in some fields and photos and they will be able to reference the RSVP list.",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index",
+    "test": "mocha server/test",
+    "debug": "node inspect index"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aedawes/customizable-wedding.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/aedawes/customizable-wedding/issues"
+  },
+  "homepage": "https://github.com/aedawes/customizable-wedding#readme",
+  "private": true,
+  "dependencies": {
+    "express": "^4.17.2"
+  }
+}
