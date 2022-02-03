@@ -21,7 +21,7 @@ app.post('/', (req, res) => {
     }
 
     else if (req.get('content-type') === 'text/plain') {
-        res.json({content: 'text/plain', requestBody: req.body});
+        req.json({content: 'text/plain', requestBody: req.body});
     }
     else{
         res.status(400).send("body is not text/plain nor applicaiton/json")
