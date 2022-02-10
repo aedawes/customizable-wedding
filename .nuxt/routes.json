@@ -1,0 +1,16 @@
+[
+  {
+    "name": "inspire",
+    "path": "/inspire",
+    "component": "/Users/eAnaisDawes/Documents/BYU classes/BYUWinter2022/itc410/customizable-wedding/pages/inspire.vue",
+    "chunkName": "pages/inspire",
+    "_name": "_40a97cdf"
+  },
+  {
+    "name": "index",
+    "path": "/",
+    "component": "/Users/eAnaisDawes/Documents/BYU classes/BYUWinter2022/itc410/customizable-wedding/pages/index.vue",
+    "chunkName": "pages/index",
+    "_name": "_79f0ae17"
+  }
+]
