@@ -4,9 +4,7 @@ info:
   version: v1
 paths:
   /accounts:
-    x-controller: accounts
     post:
-      x-operation: createAccount
       tags:
         - Accounts
       summary: Create an account
@@ -35,7 +33,6 @@ paths:
         201:
           description: Account created
   /accounts/{accountId}:
-    x-controller: delete
     parameters:
       - name: accountId
         in : path
@@ -43,7 +40,6 @@ paths:
         schema: 
           type: string
     delete:
-      x-operation: deleteAccount
       tags: 
         - Accounts
       summary: Delete an account.
@@ -51,7 +47,6 @@ paths:
         204:
           description: Account deleted
   /accounts/{accountId}/login:
-    x-controller: Login
     parameters:
       - name: accountId
         in : path
@@ -59,7 +54,6 @@ paths:
         schema: 
           type: string
     put: 
-      x-operation: LogIn
       tags:
         - Accounts
       summary: Log into an account
@@ -84,7 +78,6 @@ paths:
         200:
           description: User is logged in
   /accounts/{accountId}/logout:
-    x-controller: logout
     parameters:
       - name: accountId
         in: path
@@ -92,7 +85,6 @@ paths:
         schema:
           type: string
     put:
-      x-operation: logOut
       tags:
         - Accounts
       summary: Log out of an account
@@ -100,11 +92,9 @@ paths:
         205:
           description: User is logged out
   /{accountId}:
-    x-controller: homepage
     parameters:
       - $ref: '#/components/parameters/PathAccountId'
     get:
-    x-operation: getHome
       tags:
         - Accounts
       summary: Get the home page
@@ -122,9 +112,7 @@ paths:
         404:
           description: No page found.
   /forms:
-    x-controller: updateform
     put:
-    x-operation: updateForm
       tags:
         - Forms
       summary: Update the form
@@ -155,14 +143,12 @@ paths:
         403:
           description: Access denied.
   /guests:
-      x-controller: guests
       parameters:
         - name: guestId
           in: query
           schema:
             type: string
       get:
-        x-operation: getGuests
         tags:
           - Guests
         summary: Get the guest list
@@ -180,7 +166,6 @@ paths:
           404:
             description: No page found.
   /guests/{accountId}/addGuest:
-    x-controller: addguest
     parameters:
       - name: accountId
         in : path
@@ -191,8 +176,7 @@ paths:
         in: query
         schema:
           type: string
-    delete:
-      x-operation: addGuest
+    put:
       tags: 
         - Guests
       summary: Add a guest to the list
@@ -208,7 +192,6 @@ paths:
         403:
           description: Access denied.
   /guests/{accountId}/deleteGuest:
-    x-controller: deleteguests
     parameters:
       - name: accountId
         in : path
@@ -220,7 +203,6 @@ paths:
         schema:
           type: string
     delete:
-      x-operation: deleteGuest
       tags: 
         - Guests
       summary: Delete an account.

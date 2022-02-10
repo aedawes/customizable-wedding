@@ -1,0 +1,5 @@
+FROM node:lts
+
+COPY openAPI.yml /root/openAPI.yml
+
+ENTRYPOINT ["/bin/bash"]

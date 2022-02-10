@@ -176,27 +176,10 @@ paths:
         in: query
         schema:
           type: string
-    put:
+    delete:
       tags: 
         - Guests
       summary: Add a guest to the list
-      requestBody:
-        required: true
-        content: 
-          application/json:
-            schema:
-              type: object
-              required:
-                - guestName
-                - guestEmail
-              properties:
-                guestName: 
-                  type: string
-                guestEmail: 
-                  type: string
-            example: 
-              guestName: John Smith
-              guestEmail: foo@mail.com
       responses:
         200:
           description: Guest successfully added to the list

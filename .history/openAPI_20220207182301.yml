@@ -195,8 +195,8 @@ paths:
                 guestEmail: 
                   type: string
             example: 
-              guestName: John Smith
-              guestEmail: foo@mail.com
+              username: John Smith
+              password: foo@mail.com
       responses:
         200:
           description: Guest successfully added to the list
