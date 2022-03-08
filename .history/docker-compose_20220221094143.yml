@@ -1,0 +1,21 @@
+version: "3.8"
+
+services:
+
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 8080:8080
+
+  db:
+    build:
+      context: ./docker/db
+    restart: always
+    env_file: ./.env
+    environment:
+      POSTGRES_DB: customizable_wedding
+      POSTGRES_USER: aedawes
+      POSTGRES_PASSWORD: 50250502
+    ports:
+      - 5432
