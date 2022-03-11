@@ -26,7 +26,7 @@
       fixed
     >
       <v-list>
-        <v-list-item v-if="users !== null" @click.native="logout()">
+        <v-list-item v-if="users !== null" @click.native="right = !right">
           <v-list-item-action>
           </v-list-item-action>
           <v-list-item-title>Logout</v-list-item-title>
@@ -68,8 +68,8 @@ export default {
       title: 'Customizable Wedding'
     }
   },
-  methods: {
-    logout() {
+  method: {
+    logout () {
       this.$store.dispatch('accounts/logout')
     }
   },
@@ -80,10 +80,3 @@ export default {
   }
 }
 </script>
-
-<style scoped>
-
-v-app-bar {
-  background-color: turquoise;
-}
-</style>

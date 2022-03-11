@@ -80,10 +80,3 @@ export default {
   }
 }
 </script>
-
-<style scoped>
-
-v-app-bar {
-  background-color: turquoise;
-}
-</style>

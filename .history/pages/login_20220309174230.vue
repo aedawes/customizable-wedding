@@ -1,10 +1,11 @@
 <template>
   <div>
 
-    <h1>Authentication</h1>
-    <v-btn @click="login()">Log In</v-btn>
-    <v-btn @click="logout()">Log Out</v-btn>
-
+    <h1> Log In </h1>
+        <v-row justify="center" align="center">
+            <v-text-field v-model="loginForm.username" label="Username" required />
+        </v-row>
+        <v-btn @click="login()">Log In</v-btn>
     <div v-if="user !== null">
       Logged in as {{user}}
     </div>
@@ -13,10 +14,13 @@
 
 <script>
 export default {
-  name: 'IndexPage',
+  name: 'LoginPage',
   data () {
     return {
-      text: ''
+      loginForm: {
+          username: '',
+          password: ''
+      }
     }
   },
   methods: {
@@ -26,6 +30,9 @@ export default {
         password: 'superSecretPassword'
       })
     },
+    logout () {
+      this.$store.dispatch('accounts/logout')
+    }
   },
   computed: {
     user () {

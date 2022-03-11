@@ -26,10 +26,13 @@
       fixed
     >
       <v-list>
-        <v-list-item v-if="users !== null" @click.native="logout()">
+        <v-list-item @click.native="right = !right">
           <v-list-item-action>
+            <v-icon light>
+              mdi-repeat
+            </v-icon>
           </v-list-item-action>
-          <v-list-item-title>Logout</v-list-item-title>
+          <v-list-item-title>Switch drawer (click me)</v-list-item-title>
         </v-list-item>
       </v-list>
     </v-navigation-drawer>
@@ -68,22 +71,10 @@ export default {
       title: 'Customizable Wedding'
     }
   },
-  methods: {
-    logout() {
-      this.$store.dispatch('accounts/logout')
-    }
-  },
   computed:{
     users(){
-      return this.$store.state.accounts.user
+      return this.$store.accounts.user
     }
   }
 }
 </script>
-
-<style scoped>
-
-v-app-bar {
-  background-color: turquoise;
-}
-</style>

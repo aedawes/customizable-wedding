@@ -97,8 +97,8 @@ paths:
                 password: 
                   type: string
             example: 
-              username: aedawes
-              password: secretPassword
+              username: aedawess
+              password: superSecretPassword
       responses:
         200:
           description: User is logged in
@@ -318,4 +318,4 @@ components:
     cookieAuth:
       type: apiKey
       in: cookie
-      name: todoSessionId 
+      name: SessionId 

@@ -5,6 +5,24 @@
       fixed
       app
     >
+      <v-btn
+        icon
+        @click.stop="miniVariant = !miniVariant"
+      >
+        <v-icon>mdi-{{ `chevron-${miniVariant ? 'right' : 'left'}` }}</v-icon>
+      </v-btn>
+      <v-btn
+        icon
+        @click.stop="clipped = !clipped"
+      >
+        <v-icon>mdi-application</v-icon>
+      </v-btn>
+      <v-btn
+        icon
+        @click.stop="fixed = !fixed"
+      >
+        <v-icon>mdi-minus</v-icon>
+      </v-btn>
       <v-toolbar-title v-text="title" />
       <v-spacer />
       <v-btn
@@ -26,10 +44,13 @@
       fixed
     >
       <v-list>
-        <v-list-item v-if="users !== null" @click.native="logout()">
+        <v-list-item @click.native="right = !right">
           <v-list-item-action>
+            <v-icon light>
+              mdi-repeat
+            </v-icon>
           </v-list-item-action>
-          <v-list-item-title>Logout</v-list-item-title>
+          <v-list-item-title>Switch drawer (click me)</v-list-item-title>
         </v-list-item>
       </v-list>
     </v-navigation-drawer>
@@ -65,25 +86,13 @@ export default {
       miniVariant: false,
       right: true,
       rightDrawer: false,
-      title: 'Customizable Wedding'
-    }
-  },
-  methods: {
-    logout() {
-      this.$store.dispatch('accounts/logout')
+      title: 'Vuetify.js'
     }
   },
   computed:{
     users(){
-      return this.$store.state.accounts.user
+      return this.$store.accounts.user
     }
   }
 }
 </script>
-
-<style scoped>
-
-v-app-bar {
-  background-color: turquoise;
-}
-</style>

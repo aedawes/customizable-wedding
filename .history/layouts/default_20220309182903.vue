@@ -25,8 +25,8 @@
       temporary
       fixed
     >
-      <v-list>
-        <v-list-item v-if="users !== null" @click.native="logout()">
+      <v-list v-if="users !== null">
+        <v-list-item @click.native="right = !right">
           <v-list-item-action>
           </v-list-item-action>
           <v-list-item-title>Logout</v-list-item-title>
@@ -68,22 +68,10 @@ export default {
       title: 'Customizable Wedding'
     }
   },
-  methods: {
-    logout() {
-      this.$store.dispatch('accounts/logout')
-    }
-  },
   computed:{
     users(){
-      return this.$store.state.accounts.user
+      return this.$store.accounts.user
     }
   }
 }
 </script>
-
-<style scoped>
-
-v-app-bar {
-  background-color: turquoise;
-}
-</style>

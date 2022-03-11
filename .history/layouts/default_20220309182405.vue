@@ -26,10 +26,19 @@
       fixed
     >
       <v-list>
-        <v-list-item v-if="users !== null" @click.native="logout()">
+        <v-list-item
+          v-for="(items, i) in info"
+          :key="i"
+          :to="items.to"
+          router
+          exact
+        >
           <v-list-item-action>
+            <v-icon>{{ items.icon }}</v-icon>
           </v-list-item-action>
-          <v-list-item-title>Logout</v-list-item-title>
+          <v-list-item-content>
+            <v-list-item-title v-text="items.title" />
+          </v-list-item-content>
         </v-list-item>
       </v-list>
     </v-navigation-drawer>
@@ -68,22 +77,10 @@ export default {
       title: 'Customizable Wedding'
     }
   },
-  methods: {
-    logout() {
-      this.$store.dispatch('accounts/logout')
-    }
-  },
   computed:{
     users(){
-      return this.$store.state.accounts.user
+      return this.$store.accounts.user
     }
   }
 }
 </script>
-
-<style scoped>
-
-v-app-bar {
-  background-color: turquoise;
-}
-</style>

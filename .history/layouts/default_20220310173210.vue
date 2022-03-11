@@ -4,6 +4,7 @@
       :clipped-left="clipped"
       fixed
       app
+      :color="turquoise"
     >
       <v-toolbar-title v-text="title" />
       <v-spacer />

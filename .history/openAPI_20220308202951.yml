@@ -4,7 +4,9 @@ info:
   version: v1
 paths:
   /accounts:
+    x-controller: accounts
     post:
+      x-operation: createAccount
       tags:
         - Accounts
       summary: Create an account
@@ -16,47 +18,33 @@ paths:
               type: object
               required:
                 - username
-                - name
                 - password
               properties:
                 username:
-                  type: string
-                name: 
                   type: string
                 password:
                   type: string
             example:
               username: aedawes
-              name: Anais
               password: secretPassword
       responses:
         201:
           description: Account created
-  /accounts/{accountId}:
+  /accounts/{username}:
+    x-controller: accounts
     parameters:
-      - name: accountId
+      - name: username
         in : path
         required: true
         schema: 
           type: string
-    delete:
-      tags: 
-        - Accounts
-      summary: Delete an account.
-      responses:
-        204:
-          description: Account deleted
-  /accounts/{accountId}/login:
-    parameters:
-      - name: accountId
-        in : path
-        required: true
-        schema: 
-          type: string
-    put: 
+    put:
+      x-operation: updateAccount
       tags:
         - Accounts
-      summary: Log into an account
+      security:
+        - cookieAuth: []
+      summary: Update the Account
       requestBody:
         required: true
         content: 
@@ -76,25 +64,70 @@ paths:
               password: secretPassword
       responses:
         200:
-          description: User is logged in
-  /accounts/{accountId}/logout:
-    parameters:
-      - name: accountId
-        in: path
-        required: true
-        schema:
-          type: string
-    put:
-      tags:
+          description: Account is updated.
+    delete:
+      x-operation: deleteAccount
+      tags: 
         - Accounts
+      security:
+        - cookieAuth: []
+      summary: Delete an account.
+      responses:
+        204:
+          description: Account deleted
+  /authentication/login:
+    x-controller: authentication
+    put: 
+      x-operation: login
+      tags:
+        - Authentication
+      summary: Log into an account
+      requestBody:
+        required: true
+        content: 
+          application/json:
+            schema:
+              type: object
+              required:
+                - username
+                - password
+              properties:
+                username: 
+                  type: string
+                password: 
+                  type: string
+            example: 
+              username: aedawess
+              password: superSecretPassword
+      responses:
+        200:
+          description: User is logged in
+        401:
+          description: Not authenticated.
+        403:
+          description: Access denied.
+        404:
+          description: No page found.
+  /authentication/logout:
+    x-controller: authentication
+    put:
+      x-operation: logout
+      tags:
+        - Authentication
+      security:
+        - cookieAuth: []
       summary: Log out of an account
       responses:
-        205:
+        200:
           description: User is logged out
-  /{accountId}:
+        403: 
+          description: access denied
+  /{username}:
+    x-controller: accounts
     parameters:
-      - $ref: '#/components/parameters/PathAccountId'
+      - $ref: '#/components/parameters/PathUsername'
     get:
+      x-operation: getHome
       tags:
         - Accounts
       summary: Get the home page
@@ -112,7 +145,9 @@ paths:
         404:
           description: No page found.
   /forms:
+    # x-controller: forms
     put:
+      # x-operation: updateForm
       tags:
         - Forms
       summary: Update the form
@@ -143,31 +178,34 @@ paths:
         403:
           description: Access denied.
   /guests:
-      parameters:
-        - name: guestId
-          in: query
-          schema:
-            type: string
-      get:
-        tags:
-          - Guests
-        summary: Get the guest list
-        responses:
-          200:
-            description: Guest list loaded.
-            content:
-              application/json:
-                schema:
-                  $ref: '#/components/schemas/Guests'
-          401:
-            description: Not authenticated.
-          403:
-            description: Access denied.
-          404:
-            description: No page found.
-  /guests/{accountId}/addGuest:
+    # x-controller: guests
     parameters:
-      - name: accountId
+      - name: guestId
+        in: query
+        schema:
+          type: string
+    get:
+      # x-operation: getGuests
+      tags:
+        - Guests
+      summary: Get the guest list
+      responses:
+        200:
+          description: Guest list loaded.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Guests'
+        401:
+          description: Not authenticated.
+        403:
+          description: Access denied.
+        404:
+          description: No page found.
+  /guests/{username}/addGuest:
+    # x-controller: guests
+    parameters:
+      - name: username
         in : path
         required: true
         schema: 
@@ -177,9 +215,27 @@ paths:
         schema:
           type: string
     put:
+      # x-operation: addGuest
       tags: 
         - Guests
       summary: Add a guest to the list
+      requestBody:
+        required: true
+        content: 
+          application/json:
+            schema:
+              type: object
+              required:
+                - guestName
+                - guestEmail
+              properties:
+                guestName: 
+                  type: string
+                guestEmail: 
+                  type: string
+            example: 
+              guestName: John Smith
+              guestEmail: foo@mail.com
       responses:
         200:
           description: Guest successfully added to the list
@@ -191,9 +247,10 @@ paths:
           description: Not authenticated.
         403:
           description: Access denied.
-  /guests/{accountId}/deleteGuest:
+  /guests/{username}/deleteGuest:
+    # x-controller: guests
     parameters:
-      - name: accountId
+      - name: username
         in : path
         required: true
         schema: 
@@ -203,17 +260,18 @@ paths:
         schema:
           type: string
     delete:
+      # x-operation: deleteGuest
       tags: 
         - Guests
-      summary: Delete an account.
+      summary: Delete a guest.
       responses:
         204:
           description: Guest deleted
             
 components:
   parameters:
-    PathAccountId:
-      name: accountId
+    PathUsername:
+      name: username
       in: path
       required: true
       schema:
@@ -256,3 +314,8 @@ components:
           type: string
         guestEmail:
           type: string
+  securitySchemes:
+    cookieAuth:
+      type: apiKey
+      in: cookie
+      name: SessionId 

@@ -68,7 +68,7 @@ export default {
       title: 'Customizable Wedding'
     }
   },
-  methods: {
+  method: {
     logout() {
       this.$store.dispatch('accounts/logout')
     }
@@ -80,10 +80,3 @@ export default {
   }
 }
 </script>
-
-<style scoped>
-
-v-app-bar {
-  background-color: turquoise;
-}
-</style>

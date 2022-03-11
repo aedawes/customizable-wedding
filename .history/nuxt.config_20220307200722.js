@@ -6,8 +6,8 @@ export default {
 
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    titleTemplate: '%s - customizable wedding',
-    title: 'customizable wedding',
+    titleTemplate: '%s - customizable-wedding',
+    title: 'customizable-wedding',
     htmlAttrs: {
       lang: 'en'
     },

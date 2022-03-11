@@ -1,4 +1,4 @@
-import axios from 'axios';
+const axios = require('axios');
 
 //state---------------------------------------------------------------
 export const state = () => {
@@ -19,7 +19,7 @@ export const actions = {
     //login
     async login ({ commit, state }, { username, password }) {
         debugger
-        const res = await axios.put('api/authentication/login', {
+        const res = await this.$axios.put('api/authentication/login', {
             username,
             password
         })
@@ -29,7 +29,7 @@ export const actions = {
     },
     //logout
     async logout ({ commit }) {
-        const res = await axios.put('api/authentication/logout')
+        const res = await this.$axios.put('api/authentication/logout')
         if (res.status === 200) {
             commit('setUser', null)
         }
