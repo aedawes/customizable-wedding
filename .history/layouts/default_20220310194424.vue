@@ -85,13 +85,6 @@ export default {
   methods: {
     logout() {
       this.$store.dispatch('accounts/logout')
-      this.$router.push('/')
-    },
-    login () {
-      this.$router.push('/login')
-    },
-    createAccount () {
-      this.$router.push('/createAccount')
     }
   },
   computed:{

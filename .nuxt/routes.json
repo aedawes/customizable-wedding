@@ -1,5 +1,12 @@
 [
   {
+    "name": "createAccount",
+    "path": "/createAccount",
+    "component": "/Users/eAnaisDawes/Documents/BYU classes/BYUWinter2022/itc410/customizable-wedding/pages/createAccount.vue",
+    "chunkName": "pages/createAccount",
+    "_name": "_db548354"
+  },
+  {
     "name": "home",
     "path": "/home",
     "component": "/Users/eAnaisDawes/Documents/BYU classes/BYUWinter2022/itc410/customizable-wedding/pages/home.vue",

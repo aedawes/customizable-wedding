@@ -1,21 +1,22 @@
 <template>
-    <div class="main">
-        <div class="behind"></div>
-        <v-row justify="center" align="center">
-            <v-col cols="12" sm="8" md="6">
-                <v-card elevation="5" class="card">
-                    <v-card-title justify="center" class="justify-center">
-                        <h1> Log In </h1>
-                    </v-card-title>
-                    <v-card-text justify="center">
+  <div class="main">
+    <v-row justify="center" align="center">
+        <v-col cols="12" sm="8" md="6">
+            <v-card elevation="5" class="card">
+                <v-card-title justify="center" class="justify-center">
+                    <h1> Log In </h1>
+                </v-card-title>
+                <v-card-text justify="center">
+                    <v-form @submit="login()">
                         <v-text-field class="input" v-model="loginForm.username" label="Username" required />
                         <v-text-field class="input" v-model="loginForm.password" type="password" label="Password" required />
-                        <v-btn class="button" @click="login()">Log In</v-btn>
-                    </v-card-text>
-                </v-card>
-            </v-col>
-        </v-row>
-    </div>
+                        <v-btn class="button">Log In</v-btn>
+                    </v-form>
+                </v-card-text>
+            </v-card>
+        </v-col>
+    </v-row>
+  </div>
 </template>
 
 <script>

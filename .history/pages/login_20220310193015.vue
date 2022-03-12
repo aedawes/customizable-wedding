@@ -59,6 +59,12 @@ export default {
         margin-top: 175px !important;
     }
 
+    .behind{
+        width: 1800px;
+        height: 50px;
+        background-color: #C89D83;
+    }
+
     .card{
         padding: 50px;
         border-radius: 25px;

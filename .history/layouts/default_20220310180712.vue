@@ -1,5 +1,5 @@
 <template>
-  <v-app light class="mainbody">
+  <v-app dark>
     <v-app-bar
       :clipped-left="clipped"
       fixed
@@ -32,26 +32,13 @@
           </v-list-item-action>
           <v-list-item-title>Logout</v-list-item-title>
         </v-list-item>
-        <v-list-item v-if="users === null" @click.native="login()">
-          <v-list-item-action>
-          </v-list-item-action>
-          <v-list-item-title>Login</v-list-item-title>
-        </v-list-item>
-        <v-list-item v-if="users === null" @click.native="createAccount()">
-          <v-list-item-action>
-          </v-list-item-action>
-          <v-list-item-title>Create an Account</v-list-item-title>
-        </v-list-item>
       </v-list>
     </v-navigation-drawer>
     <v-footer
       :absolute="!fixed"
       app
-      class="footer"
     >
-      <span> 
-        <a class="footerLink" target="_blank" href="https://github.com/aedawes/customizable-wedding.git"> Link to Github </a>
-      </span>
+      <span>&copy; {{ new Date().getFullYear() }}</span>
     </v-footer>
   </v-app>
 </template>
@@ -85,13 +72,6 @@ export default {
   methods: {
     logout() {
       this.$store.dispatch('accounts/logout')
-      this.$router.push('/')
-    },
-    login () {
-      this.$router.push('/login')
-    },
-    createAccount () {
-      this.$router.push('/createAccount')
     }
   },
   computed:{
@@ -103,27 +83,8 @@ export default {
 </script>
 
 <style scoped>
-  @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400&family=Quicksand:wght@300;400&display=swap');
-
   .navbar {
-    background-color: rgba(0, 0, 0, 0.5) !important;
-    color: #F5F4F0 !important;
-    font-family: 'Montserrat', sans-serif !important;
-  }
-
-  .mainbody{
-    font-family: 'Montserrat', sans-serif !important;
-    background-color: #F5F4F0 !important;
-    backdrop-filter: blur(2px) !important;
-    color: #C89D83;
-  }
-
-  .footer{
-    background-color: #C89D83 !important;
-  }
-
-  .footerLink {
-    color: #F5F4F0;
-    text-decoration: none;
+    background-color: aquamarine !important;
+    margin-bottom: 250px;
   }
 </style>

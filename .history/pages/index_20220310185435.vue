@@ -3,7 +3,7 @@
     <v-row justify="center" align="center">
       <v-col cols="12" sm="8" md="6" class="colmn">
         <h1 class="Welcome">Welcome</h1>
-        <h2 class="subIntro">create a website tailored to your wedding</h2>
+        <h2 class="subIntro">Create a website tailored to your wedding</h2>
         <v-btn class="buttons" @click="createAccount()">Create an Account</v-btn>
         <v-btn class="buttons" @click="login()">Log In</v-btn>
       </v-col>
@@ -48,12 +48,9 @@ export default {
   }
 
   .buttons {
-    border-radius: 15px;
+    border-radius: 10%;
     height: 75px !important;
-    width: 225px;
+    width: 250px;
     margin: 20px;
-    background-color: #C89D83 !important;
-    font-size: 15px;
-    color: #F5F4F0;
   }
 </style>

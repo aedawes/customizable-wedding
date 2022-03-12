@@ -32,16 +32,6 @@
           </v-list-item-action>
           <v-list-item-title>Logout</v-list-item-title>
         </v-list-item>
-        <v-list-item v-if="users === null" @click.native="login()">
-          <v-list-item-action>
-          </v-list-item-action>
-          <v-list-item-title>Login</v-list-item-title>
-        </v-list-item>
-        <v-list-item v-if="users === null" @click.native="createAccount()">
-          <v-list-item-action>
-          </v-list-item-action>
-          <v-list-item-title>Create an Account</v-list-item-title>
-        </v-list-item>
       </v-list>
     </v-navigation-drawer>
     <v-footer
@@ -50,7 +40,7 @@
       class="footer"
     >
       <span> 
-        <a class="footerLink" target="_blank" href="https://github.com/aedawes/customizable-wedding.git"> Link to Github </a>
+        <a class="footerLink" target="_blank" href="https://github.com/aedawes/customizable-wedding.git"> Github </a>
       </span>
     </v-footer>
   </v-app>
@@ -85,13 +75,6 @@ export default {
   methods: {
     logout() {
       this.$store.dispatch('accounts/logout')
-      this.$router.push('/')
-    },
-    login () {
-      this.$router.push('/login')
-    },
-    createAccount () {
-      this.$router.push('/createAccount')
     }
   },
   computed:{
@@ -120,10 +103,5 @@ export default {
 
   .footer{
     background-color: #C89D83 !important;
-  }
-
-  .footerLink {
-    color: #F5F4F0;
-    text-decoration: none;
   }
 </style>
