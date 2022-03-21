@@ -1,10 +1,10 @@
 <template>
   <div class="main">
-    <h1 class="Welcome">Welcome<span v-if="theName.length > 0">,</span> {{ theName }}</h1>
     <v-row justify="center" align="center">
-      <v-col cols="12" sm="8" md="6" id="colmn">
+      <v-col id="colmn">
+        <h1 class="Welcome">Welcome, {{ theName }}</h1>
         <h2 class="subIntro">create a website tailored to your wedding</h2>
-        <Name @updateName="theName=$event"></Name>
+        <Name id="comp" @updateName="theName=$event"></Name>
         <v-btn class="buttons" @click="createAccount()">Create an Account</v-btn>
         <v-btn class="buttons" @click="login()">Log In</v-btn>
       </v-col>
@@ -41,7 +41,6 @@ export default {
 
   .Welcome {
     font-size: 100px !important;
-    text-align: center;
   }
 
   .subIntro {
@@ -58,5 +57,9 @@ export default {
     background-color: #C89D83 !important;
     font-size: 15px;
     color: #F5F4F0;
+  }
+
+  #comp{
+    width: 100px;
   }
 </style>

@@ -1,6 +1,6 @@
 <template>
   <div class="main">
-    <h1 class="Welcome">Welcome<span v-if="theName.length > 0">,</span> {{ theName }}</h1>
+    <h1 class="Welcome">Welcome<h1 v-if="theName != NULL">,</h1> {{ theName }}</h1>
     <v-row justify="center" align="center">
       <v-col cols="12" sm="8" md="6" id="colmn">
         <h2 class="subIntro">create a website tailored to your wedding</h2>

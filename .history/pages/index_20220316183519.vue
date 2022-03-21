@@ -1,8 +1,8 @@
 <template>
   <div class="main">
-    <h1 class="Welcome">Welcome<span v-if="theName.length > 0">,</span> {{ theName }}</h1>
     <v-row justify="center" align="center">
       <v-col cols="12" sm="8" md="6" id="colmn">
+        <h1 class="Welcome">Welcome, {{ theName }}</h1>
         <h2 class="subIntro">create a website tailored to your wedding</h2>
         <Name @updateName="theName=$event"></Name>
         <v-btn class="buttons" @click="createAccount()">Create an Account</v-btn>
@@ -42,6 +42,7 @@ export default {
   .Welcome {
     font-size: 100px !important;
     text-align: center;
+    width: 900px;
   }
 
   .subIntro {
