@@ -19,6 +19,7 @@
     "dotenv": "^16.0.0",
     "express": "^4.17.3",
     "express-session": "^1.17.2",
+    "multer": "^1.4.4",
     "node": "^17.5.0",
     "nuxt": "^2.15.8",
     "openapi-enforcer": "^1.16.1",
