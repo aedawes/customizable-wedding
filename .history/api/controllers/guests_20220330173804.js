@@ -17,11 +17,14 @@ module.exports = function (pool) {
 			}
 		},
 		async getGuests (req, res) {
-			const accountId = req.user.id
+			const accountId = req.user.id  //FIXME: Only one guest is returned.  Query OK
 			const guestList = await guests.getGuests(pool, accountId)
 			console.log("GUEST NAME: " + guestList.guestname)
-			if (accountId) {
-					res.enforcer.status(200).send(guestList)
+			if (accountId) {//FIXME:  I set it so that it will loop through the array that is returned
+					res.enforcer.status(200).send({	
+						guestname: guestList[i].guestname,  //FIXME:  It doesn't want to reset this, possibly need to change API
+						guestemail: guestList[i].guestEmail
+					})
 			} else{
 				res.enforcer.status(404).send()
 			}

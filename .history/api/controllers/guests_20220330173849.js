@@ -17,10 +17,10 @@ module.exports = function (pool) {
 			}
 		},
 		async getGuests (req, res) {
-			const accountId = req.user.id
+			const accountId = req.user.id  //FIXME: Only one guest is returned.  Query OK
 			const guestList = await guests.getGuests(pool, accountId)
 			console.log("GUEST NAME: " + guestList.guestname)
-			if (accountId) {
+			if (accountId) {//FIXME:  I set it so that it will loop through the array that is returned
 					res.enforcer.status(200).send(guestList)
 			} else{
 				res.enforcer.status(404).send()
