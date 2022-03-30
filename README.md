@@ -59,7 +59,7 @@ I am going to create a website that is a customizable resource for newly engaged
 | log in | `/accounts/{accountId}/login` | PUT | `accountId` | Account Log In |
 | log out | `/accounts/{accountId}/logout` | PUT | `accountId` | |
 | update form | `/forms` | PUT | | Update Form |
-| get home | `/{accountId}` | GET | | Get the Home Page |
+| get home | `/home/{username}` | GET | | Get the Home Page |
 | add guest to list | `/guests/{accountId}/addGuest` | PUT |  `accountId` `guestId`  | Add Guest to List |
 | get guest list | `/guests` | GET | | Get the Guest List |
 | delete guest from list | `/guests/{accountId}/deleteGuest` | DELETE | `accountId` `guestId` | |
