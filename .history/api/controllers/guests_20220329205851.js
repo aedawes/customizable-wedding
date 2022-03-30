@@ -17,7 +17,7 @@ module.exports = function (pool) {
 			}
 		},
 		async getGuests (req, res) {
-			const accountId = req.user.id  //FIXME: Only one guest is returned.  Query OK
+			const accountId = req.user.id  //FIXME: Gets only one guest is returned.  Query OK
 			const guestList = await guests.getGuests(pool, accountId)
 			console.log("GUEST NAME: " + guestList.guestname)
 			if (accountId) {
@@ -30,25 +30,6 @@ module.exports = function (pool) {
 			} else{
 				res.enforcer.status(404).send()
 			}
-		},
-		async deleteGuest (req, res) {
-			const { email } = req.enforcer.params  //FIXME: How to get the email from the page to delete without request body
-			try {
-				await client.query('BEGIN')
-				let guest = await guests.getGuestByEmail(client, email)
-				if (guest === undefined) {
-					res.enforcer.status(404).send()
-				} else {
-					await accounts.deleteGuest(client, email)
-					res.enforcer.status(204).send()
-				}
-				await client.query('COMMIT')
-			} catch (e) {
-				await client.query('ROLLBACK')
-				throw e
-			} finally {
-				client.release()
-			}
-		},
+		}
 	}
 }

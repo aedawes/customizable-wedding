@@ -185,7 +185,6 @@ paths:
   /guests/{username}:
     x-controller: guests
     parameters:
-      - $ref: '#/components/parameters/PathUsername'
       - name: guestId
         in: query
         schema:
@@ -208,16 +207,6 @@ paths:
           description: Access denied.
         404:
           description: No page found.
-    delete:
-      x-operation: deleteGuest
-      security:
-        - cookieAuth: []
-      tags: 
-        - Guests
-      summary: Delete a guest.
-      responses:
-        204:
-          description: Guest deleted
   /guests/{username}/addguest:
     x-controller: guests
     parameters:
@@ -262,7 +251,28 @@ paths:
         401:
           description: Not authenticated.
         403:
-          description: Access denied.   
+          description: Access denied.
+  /guests/{username}/deleteGuest:
+    # x-controller: guests
+    parameters:
+      - name: username
+        in : path
+        required: true
+        schema: 
+          type: string
+      - name: guestId
+        in: query
+        schema:
+          type: string
+    delete:
+      # x-operation: deleteGuest
+      tags: 
+        - Guests
+      summary: Delete a guest.
+      responses:
+        204:
+          description: Guest deleted
+            
 components:
   parameters:
     PathUsername:

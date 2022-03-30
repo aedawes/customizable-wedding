@@ -215,6 +215,19 @@ paths:
       tags: 
         - Guests
       summary: Delete a guest.
+      requestBody:
+        required: true
+        content: 
+          application/json:
+            schema:
+              type: object
+              required:
+                - guestEmail
+              properties:
+                guestEmail: 
+                  type: string
+            example: 
+              guestEmail: foo@mail.com
       responses:
         204:
           description: Guest deleted

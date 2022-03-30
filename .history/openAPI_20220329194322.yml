@@ -170,8 +170,8 @@ paths:
               # couplePhotoTwo: UGxhY2Vob2xkZXIK
               addRegistryLink: www.website.com/ourRegistry
       responses:
-        200:
-          description: Form succesfully added.
+        201:
+          description: Form succesfully created.
           content:
             application/json:
               schema:
@@ -182,16 +182,15 @@ paths:
           description: Access denied.
         409:
           description: Already Created.
-  /guests/{username}:
+  /guests:
     x-controller: guests
     parameters:
-      - $ref: '#/components/parameters/PathUsername'
       - name: guestId
         in: query
         schema:
           type: string
     get:
-      x-operation: getGuests
+      # x-operation: getGuests
       tags:
         - Guests
       summary: Get the guest list
@@ -208,18 +207,8 @@ paths:
           description: Access denied.
         404:
           description: No page found.
-    delete:
-      x-operation: deleteGuest
-      security:
-        - cookieAuth: []
-      tags: 
-        - Guests
-      summary: Delete a guest.
-      responses:
-        204:
-          description: Guest deleted
   /guests/{username}/addguest:
-    x-controller: guests
+    x-controller: addGuest
     parameters:
       - name: username
         in : path
@@ -231,7 +220,7 @@ paths:
         schema:
           type: string
     put:
-      x-operation: addGuest
+      # x-operation: addGuest
       tags: 
         - Guests
       summary: Add a guest to the list
@@ -262,7 +251,28 @@ paths:
         401:
           description: Not authenticated.
         403:
-          description: Access denied.   
+          description: Access denied.
+  /guests/{username}/deleteGuest:
+    # x-controller: guests
+    parameters:
+      - name: username
+        in : path
+        required: true
+        schema: 
+          type: string
+      - name: guestId
+        in: query
+        schema:
+          type: string
+    delete:
+      # x-operation: deleteGuest
+      tags: 
+        - Guests
+      summary: Delete a guest.
+      responses:
+        204:
+          description: Guest deleted
+            
 components:
   parameters:
     PathUsername:

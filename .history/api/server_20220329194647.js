@@ -121,7 +121,7 @@ app.use(enforcerMiddleware.route({
 	accounts: Accounts(pool),
 	authentication: Authentication(passport),
 	forms: Forms(pool),
-	guests: Guests(pool)
+	addguests: AddGuests(pool)
 }))
 
 //add fallback mocking middleware here
