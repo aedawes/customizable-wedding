@@ -172,6 +172,10 @@ paths:
       responses:
         200:
           description: Form succesfully added.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Home'
         401:
           description: Not authenticated.
         403:
@@ -265,6 +269,10 @@ paths:
       responses:
         200:
           description: Guest successfully added to the list
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Guests'
         401:
           description: Not authenticated.
         403:

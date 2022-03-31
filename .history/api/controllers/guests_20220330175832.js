@@ -19,6 +19,7 @@ module.exports = function (pool) {
 		async getGuests (req, res) {
 			const accountId = req.user.id
 			const guestList = await guests.getGuests(pool, accountId)
+			console.log("GUEST NAME: " + guestList.guestname)
 			if (accountId) {
 					res.enforcer.status(200).send(guestList)
 			} else{
@@ -26,7 +27,6 @@ module.exports = function (pool) {
 			}
 		},
 		async deleteGuest (req, res) {
-			const client = await pool.connect()
 			const { guestEmail } = req.enforcer.params 
 			try {
 				await client.query('BEGIN')
@@ -34,7 +34,7 @@ module.exports = function (pool) {
 				if (guest === undefined) {
 					res.enforcer.status(404).send()
 				} else {
-					await guests.deleteGuest(client, guestEmail)
+					await accounts.deleteGuest(client, guestEmail)
 					res.enforcer.status(204).send()
 				}
 				await client.query('COMMIT')

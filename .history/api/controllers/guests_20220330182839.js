@@ -34,7 +34,7 @@ module.exports = function (pool) {
 				if (guest === undefined) {
 					res.enforcer.status(404).send()
 				} else {
-					await guests.deleteGuest(client, guestEmail)
+					await accounts.deleteGuest(client, guestEmail)
 					res.enforcer.status(204).send()
 				}
 				await client.query('COMMIT')

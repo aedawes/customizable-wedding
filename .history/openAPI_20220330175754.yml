@@ -172,6 +172,10 @@ paths:
       responses:
         200:
           description: Form succesfully added.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Home'
         401:
           description: Not authenticated.
         403:
@@ -204,7 +208,7 @@ paths:
           description: Access denied.
         404:
           description: No page found.
-  /guests/{guestEmail}/deleteGuest:
+    guests/{guestEmail}:
     x-controller: guests
     parameters:
       - $ref: '#/components/parameters/PathEmail'
@@ -222,10 +226,6 @@ paths:
       responses:
         204:
           description: Guest deleted
-        401:
-          description: Not authenticated.
-        403:
-          description: Access denied.
         404:
           description: Guest not found
   /guests/{username}/addguest:
@@ -265,6 +265,10 @@ paths:
       responses:
         200:
           description: Guest successfully added to the list
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Guests'
         401:
           description: Not authenticated.
         403:

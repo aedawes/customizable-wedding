@@ -265,6 +265,10 @@ paths:
       responses:
         200:
           description: Guest successfully added to the list
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Guests'
         401:
           description: Not authenticated.
         403:

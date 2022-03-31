@@ -26,7 +26,6 @@ module.exports = function (pool) {
 			}
 		},
 		async deleteGuest (req, res) {
-			const client = await pool.connect()
 			const { guestEmail } = req.enforcer.params 
 			try {
 				await client.query('BEGIN')
@@ -34,7 +33,7 @@ module.exports = function (pool) {
 				if (guest === undefined) {
 					res.enforcer.status(404).send()
 				} else {
-					await guests.deleteGuest(client, guestEmail)
+					await accounts.deleteGuest(client, guestEmail)
 					res.enforcer.status(204).send()
 				}
 				await client.query('COMMIT')

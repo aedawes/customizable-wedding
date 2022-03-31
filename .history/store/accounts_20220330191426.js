@@ -53,7 +53,7 @@ export const actions = {
     },
 
     //updateAccount
-    // async updateAccount ({commit, state})
+    async updateAccount ({commit, state})
 }
 
 //Check if the user cookie is set and if so get the cookie value.
