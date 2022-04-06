@@ -54,9 +54,7 @@ export const actions = {
 
     //updateAccount
     async updateAccount ({commit, state}, { username }){
-        let theUsername = getUserFromCookie()
-        theUsername = theUsername.substring(1, (theUsername.length - 1))
-        const res = await axios.put(`api/accounts/${ theUsername }`, {
+        const res = await axios.put(`api/accounts/${ username }`, {
             username
         })
         if (res.statues === 200) {
@@ -66,7 +64,7 @@ export const actions = {
 
     async deleteAccount ({commit, state}){
         let theUsername = getUserFromCookie()
-        theUsername = theUsername.substring(1, (theUsername.length - 1))
+        theUsername = theUsername.substring(1, (theUsername.length - 2)
         const res = await axios.delete(`api/accounts/${ theUsername }`)
         if (res.status === 204) {
             commit('setUser', null)

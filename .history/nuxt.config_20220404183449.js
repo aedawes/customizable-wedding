@@ -50,7 +50,7 @@ export default {
       dark: true,
       themes: {
         dark: {
-          primary: colors.grey.darken3,
+          primary: colors.aqua,
           accent: colors.grey.darken3,
           secondary: colors.amber.darken3,
           info: colors.teal.lighten1,

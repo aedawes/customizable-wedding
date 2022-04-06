@@ -1,5 +1,12 @@
 [
   {
+    "name": "account",
+    "path": "/account",
+    "component": "/Users/eAnaisDawes/Documents/BYU classes/BYUWinter2022/itc410/customizable-wedding/pages/account.vue",
+    "chunkName": "pages/account",
+    "_name": "_3a029a9c"
+  },
+  {
     "name": "createAccount",
     "path": "/createAccount",
     "component": "/Users/eAnaisDawes/Documents/BYU classes/BYUWinter2022/itc410/customizable-wedding/pages/createAccount.vue",
@@ -14,13 +21,6 @@
     "_name": "_f67eefe2"
   },
   {
-    "name": "home",
-    "path": "/home",
-    "component": "/Users/eAnaisDawes/Documents/BYU classes/BYUWinter2022/itc410/customizable-wedding/pages/home.vue",
-    "chunkName": "pages/home",
-    "_name": "_4b89eaaa"
-  },
-  {
     "name": "inspire",
     "path": "/inspire",
     "component": "/Users/eAnaisDawes/Documents/BYU classes/BYUWinter2022/itc410/customizable-wedding/pages/inspire.vue",
@@ -33,6 +33,13 @@
     "component": "/Users/eAnaisDawes/Documents/BYU classes/BYUWinter2022/itc410/customizable-wedding/pages/login.vue",
     "chunkName": "pages/login",
     "_name": "_4398512e"
+  },
+  {
+    "name": "home",
+    "path": "/home/:index",
+    "component": "/Users/eAnaisDawes/Documents/BYU classes/BYUWinter2022/itc410/customizable-wedding/pages/home/_index.vue",
+    "chunkName": "pages/home/_index",
+    "_name": "_4c4443f0"
   },
   {
     "name": "index",

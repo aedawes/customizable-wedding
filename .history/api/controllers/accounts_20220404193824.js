@@ -67,7 +67,6 @@ module.exports = function (pool) {
 		},
 		async getHome (req, res) {
 			const accountId = req.enforcer.params.username || req.user.id 	//set account Id to current user
-			console.log(accountId)
 			const siteInfo = await accounts.getHome(pool, accountId)    //set the siteInfo to the correct row in forms
 			if (siteInfo) {
 				console.log(siteInfo)

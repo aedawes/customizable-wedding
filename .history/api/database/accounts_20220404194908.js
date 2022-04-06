@@ -28,7 +28,7 @@ exports.getAccount = async function (client, accountId) {
 exports.getHome = async function (client, accountId) {
     const { rows } = await client.query({
         name: 'get-home-by-id',
-        text: 'SELECT * FROM forms WHERE userid=(SELECT account_id FROM accounts WHERE username=$1)',
+        text: 'SELECT * FROM forms INNER JOIN forms.userid=(SELECT account_id FROM accounts WHERE username=$1)',
         values: [accountId]
     })
     return rows[0]

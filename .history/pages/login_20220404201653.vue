@@ -45,7 +45,7 @@ export default {
         password: this.loginForm.password
       })
       .then(() => {
-          this.$router.push('/home/' + this.loginForm.username)
+          this.$router.push('/home' + this.loginForm.username)
       })
       .catch(() => {
           console.error("Login Failed")
