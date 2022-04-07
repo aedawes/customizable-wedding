@@ -13,7 +13,7 @@
                         <v-text-field class="input" v-model="form.addressTwo" label="321 Apple Rd" required />
                         <v-text-field class="input" v-model="form.addRegistryLink" label="www.registry.com" required />
                         <div class="centerbtn">
-                          <v-btn class="button" @click="createForm()">Create Site</v-btn>
+                          <v-btn class="button" >Create Site</v-btn>
                         </div>
                     </v-card-text>
                 </v-card>
@@ -48,8 +48,7 @@ export default {
             addRegistryLink: this.form.addRegistryLink
         });
         if (success === 'success'){
-            let theUsername = this.user.substring(1, (this.user.length - 1))
-            this.$router.push(`/home/${ theUsername }`)
+            this.$router.push(`/home/${ this.user }`)
         }
         else{
             return false

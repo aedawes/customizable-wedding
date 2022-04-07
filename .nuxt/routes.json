@@ -21,6 +21,13 @@
     "_name": "_f67eefe2"
   },
   {
+    "name": "guestList",
+    "path": "/guestList",
+    "component": "/Users/eAnaisDawes/Documents/BYU classes/BYUWinter2022/itc410/customizable-wedding/pages/guestList.vue",
+    "chunkName": "pages/guestList",
+    "_name": "_0a0d0b5b"
+  },
+  {
     "name": "inspire",
     "path": "/inspire",
     "component": "/Users/eAnaisDawes/Documents/BYU classes/BYUWinter2022/itc410/customizable-wedding/pages/inspire.vue",

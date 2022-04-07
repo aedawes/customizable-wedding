@@ -3,8 +3,7 @@ import axios from 'axios';
 //state---------------------------------------------------------------
 export const state = () => {
     return {
-        user: getUserFromCookie(),
-        content: {}
+        user: getUserFromCookie()
     }
 }
 

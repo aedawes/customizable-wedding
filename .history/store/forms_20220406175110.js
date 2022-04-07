@@ -17,13 +17,13 @@ export const mutations = {
 //actions--------------------------------------------------------------
 export const actions = {
     async setForm ({commit, state}, { coupleName, addressOne, addressTwo, addRegistryLink}){
-        const res = await axios.put('api/forms', {
+        const res = await axios.post('api/accounts', {
             coupleName,
             addressOne,
             addressTwo,
             addRegistryLink
         })
-        if (res.status === 200) {
+        if (res.status === 201) {
             return "success"
         }
         else{

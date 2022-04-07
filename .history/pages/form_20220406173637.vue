@@ -4,6 +4,7 @@
         <v-row justify="center" align="center">
             <v-col cols="12" sm="8" md="6">
                 <v-card elevation="5" class="card">
+                  <v-btn @click="backbutton()" text justify="left"><v-icon>mdi-arrow-left-circle</v-icon></v-btn>
                     <v-card-title justify="center" class="justify-center">
                         <h1> Enter Site Details </h1>
                     </v-card-title>
@@ -13,7 +14,7 @@
                         <v-text-field class="input" v-model="form.addressTwo" label="321 Apple Rd" required />
                         <v-text-field class="input" v-model="form.addRegistryLink" label="www.registry.com" required />
                         <div class="centerbtn">
-                          <v-btn class="button" @click="createForm()">Create Site</v-btn>
+                          <v-btn class="button" >Create Site</v-btn>
                         </div>
                     </v-card-text>
                 </v-card>
@@ -24,36 +25,36 @@
 
 <script>
 export default {
-  name: 'FormPage',
+  name: 'LoginPage',
   middleware:[
     "lastRoute"
   ],
   data () {
     return {
-      form: {
-          coupleName: '',
-          addressOne: '',
-          addressTwo: '',
-          addRegistryLink: ''
+      loginForm: {
+          username: '',
+          password: ''
       }
     }
   },
-  methods:{
-    async createForm(){
-      const success = await this.$store
-            .dispatch("forms/setForm", {
-            coupleName: this.form.coupleName,
-            addressOne: this.form.addressOne,
-            addressTwo: this.form.addressTwo,
-            addRegistryLink: this.form.addRegistryLink
-        });
-        if (success === 'success'){
-            let theUsername = this.user.substring(1, (this.user.length - 1))
-            this.$router.push(`/home/${ theUsername }`)
-        }
-        else{
-            return false
-        }
+  methods: {
+    backbutton(){
+        this.$router.push(this.$store.getters['routeHistory/last'])
+    },
+    login () {
+      this.$store.dispatch('accounts/login', {
+        username: this.loginForm.username,
+        password: this.loginForm.password
+      })
+      .then(() => {
+          this.$router.push('/home/' + this.loginForm.username)
+      })
+      .catch(() => {
+          console.error("Login Failed")
+      })
+    },
+    logout () {
+      this.$store.dispatch('accounts/logout')
     }
   },
   computed: {

@@ -16,12 +16,11 @@ export const mutations = {
 
 //actions--------------------------------------------------------------
 export const actions = {
-    async setForm ({commit, state}, { coupleName, addressOne, addressTwo, addRegistryLink}){
-        const res = await axios.put('api/forms', {
-            coupleName,
-            addressOne,
-            addressTwo,
-            addRegistryLink
+    async addGuest ({commit, state}, { guestName, guestEmail}){
+        let theUsername = state.user.substring(1, (this.user.length - 1))
+        const res = await axios.put('api/guests/' + theUsername + '/addGuest', {
+            guestName,
+            guestEmail
         })
         if (res.status === 200) {
             return "success"

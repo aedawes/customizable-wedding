@@ -2,36 +2,31 @@
   <div class="main">
     <v-row justify="center" align="center">
       <v-col cols="12" sm="8" md="6" id="colmn">
-        <v-card elevation="5" class="card">
-            <v-card-text justify="center">
-                <p> Name: {{ home.coupleName }} </p>
-                <p> Address One: {{ home.addressOne }} </p>
-                <p> Address Two: {{ home.addressTwo }} </p>
-            </v-card-text>
-        </v-card>
+        <h2 class="subIntro">Create Your Site</h2>
+        <v-btn class="buttons" @click="createAccount()">Create an Account</v-btn>
       </v-col>
     </v-row>
+
   </div>
 </template>
 
 <script>
 export default {
-  name: 'Home',
-  async asyncData ({ params, store }) {
-    console.log(params)
-    await store.dispatch('accounts/getHome', params.index)
+  name: 'IndexPage',
+  data () {
     return {
-        form:{
-            coupleName: '',
-
-        }
+      theName: '',
+      text: ''
     }
   },
-  computed:{
-      home(){
-          return this.$store.state.accounts.content
-      }
-  }
+  methods: {
+    login () {
+      this.$router.push('/login')
+    },
+    createAccount () {
+      this.$router.push('/createAccount')
+    }
+  },
 }
 </script>
 

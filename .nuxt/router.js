@@ -7,6 +7,7 @@ import scrollBehavior from './router.scrollBehavior.js'
 const _3a029a9c = () => interopDefault(import('../pages/account.vue' /* webpackChunkName: "pages/account" */))
 const _db548354 = () => interopDefault(import('../pages/createAccount.vue' /* webpackChunkName: "pages/createAccount" */))
 const _f67eefe2 = () => interopDefault(import('../pages/form.vue' /* webpackChunkName: "pages/form" */))
+const _0a0d0b5b = () => interopDefault(import('../pages/guestList.vue' /* webpackChunkName: "pages/guestList" */))
 const _40a97cdf = () => interopDefault(import('../pages/inspire.vue' /* webpackChunkName: "pages/inspire" */))
 const _4398512e = () => interopDefault(import('../pages/login.vue' /* webpackChunkName: "pages/login" */))
 const _4c4443f0 = () => interopDefault(import('../pages/home/_index.vue' /* webpackChunkName: "pages/home/_index" */))
@@ -35,6 +36,10 @@ export const routerOptions = {
     path: "/form",
     component: _f67eefe2,
     name: "form"
+  }, {
+    path: "/guestList",
+    component: _0a0d0b5b,
+    name: "guestList"
   }, {
     path: "/inspire",
     component: _40a97cdf,

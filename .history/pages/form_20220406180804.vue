@@ -48,8 +48,7 @@ export default {
             addRegistryLink: this.form.addRegistryLink
         });
         if (success === 'success'){
-            let theUsername = this.user.substring(1, (this.user.length - 1))
-            this.$router.push(`/home/${ theUsername }`)
+            this.$router.push(`/home/${ this.user }`)
         }
         else{
             return false

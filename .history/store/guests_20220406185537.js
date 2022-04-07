@@ -1,7 +1,9 @@
+import axios from 'axios';
+
 //state---------------------------------------------------------------
 export const state = () => {
     return {
-        user: getUserFromCookie()
+        user: getUserFromCookie(),
     }
 }
 
@@ -9,26 +11,22 @@ export const state = () => {
 export const mutations = {
     setUser (state, user) {
         state.user = user
-    }
+    },
 }
 
 //actions--------------------------------------------------------------
 export const actions = {
-    //login
-    async login ({ commit, state }, { username, password }) {
-        const res = await this.$axios.put('api/authentication/login', {
-            username,
-            password
+    async addGuest ({commit, state}, { guestName, guestEmail}){
+        let theUsername = state.user.substring(1, (state.user.length - 1))
+        const res = await axios.put('api/guests/' + theUsername + '/addguest', {
+            guestName,
+            guestEmail
         })
         if (res.status === 200) {
-            commit('setUser', getUserFromCookie())
+            return "success"
         }
-    },
-    //logout
-    async logout ({ commit }) {
-        const res = await this.$axios.put('api/authentication/logout')
-        if (res.status === 200) {
-            commit('setUser', null)
+        else{
+            return "fail"
         }
     }
 }

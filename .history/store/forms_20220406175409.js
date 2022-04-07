@@ -17,17 +17,14 @@ export const mutations = {
 //actions--------------------------------------------------------------
 export const actions = {
     async setForm ({commit, state}, { coupleName, addressOne, addressTwo, addRegistryLink}){
-        const res = await axios.put('api/forms', {
+        const res = await axios.post('forms', {
             coupleName,
             addressOne,
             addressTwo,
             addRegistryLink
         })
         if (res.status === 200) {
-            return "success"
-        }
-        else{
-            return "fail"
+            commit('setUser', getUserFromCookie())
         }
     }
 }

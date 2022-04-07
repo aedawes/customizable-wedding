@@ -4,9 +4,9 @@
       <v-col cols="12" sm="8" md="6" id="colmn">
         <v-card elevation="5" class="card">
             <v-card-text justify="center">
-                <p> Name: {{ home.coupleName }} </p>
-                <p> Address One: {{ home.addressOne }} </p>
-                <p> Address Two: {{ home.addressTwo }} </p>
+                <v-text-field class="input" v-model="guestName" label="name" required />
+                <v-text-field class="input" v-model="guestEmail" label="email" required />
+                <v-btn class="button" @click="addGuest()">Add Guest</v-btn>
             </v-card-text>
         </v-card>
       </v-col>
@@ -16,22 +16,29 @@
 
 <script>
 export default {
-  name: 'Home',
-  async asyncData ({ params, store }) {
-    console.log(params)
-    await store.dispatch('accounts/getHome', params.index)
-    return {
-        form:{
-            coupleName: '',
-
+    name: 'IndexPage',
+    data () {
+        return {
+        username: ''
+        }
+    },
+    methods: {
+        async addGuest(){
+            const success = await this.$store
+                .dispatch("guests/addGuest", {
+                guestName: this.form.guestName,
+                guestEmail: this.form.guestEmail
+            });
+            if (success === 'success'){
+                alert(this.guestName)
+            }
+        }
+    },
+    computed: {
+        user () {
+        return this.$store.state.accounts.user
         }
     }
-  },
-  computed:{
-      home(){
-          return this.$store.state.accounts.content
-      }
-  }
 }
 </script>
 

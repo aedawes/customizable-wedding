@@ -19,6 +19,7 @@ let store = {};
 
   resolveStoreModules(require('../store/accounts.js'), 'accounts.js')
   resolveStoreModules(require('../store/forms.js'), 'forms.js')
+  resolveStoreModules(require('../store/guests.js'), 'guests.js')
   resolveStoreModules(require('../store/routeHistory.js'), 'routeHistory.js')
   resolveStoreModules(require('../store/todo.js'), 'todo.js')
 
@@ -29,6 +30,7 @@ let store = {};
     module.hot.accept([
       '../store/accounts.js',
       '../store/forms.js',
+      '../store/guests.js',
       '../store/routeHistory.js',
       '../store/todo.js',
     ], () => {

@@ -3,8 +3,7 @@ import axios from 'axios';
 //state---------------------------------------------------------------
 export const state = () => {
     return {
-        user: getUserFromCookie(),
-        content: {}
+        user: getUserFromCookie()
     }
 }
 
@@ -68,21 +67,12 @@ export const actions = {
         }
     },
 
-    //deleteAccount
     async deleteAccount ({commit, state}){
         let theUsername = getUserFromCookie()
         theUsername = theUsername.substring(1, (theUsername.length - 1))
         const res = await axios.delete(`api/accounts/${ theUsername }`)
         if (res.status === 204) {
             commit('setUser', null)
-        }
-    },
-
-    //getHomePage
-    async getHome ({commit, state}, accountId){
-        const res = await axios.get(`/api/home/${ accountId }`)
-        if (res.status === 200) {
-            commit('setHome', res.data)
         }
     }
 }

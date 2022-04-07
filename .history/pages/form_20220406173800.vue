@@ -13,7 +13,7 @@
                         <v-text-field class="input" v-model="form.addressTwo" label="321 Apple Rd" required />
                         <v-text-field class="input" v-model="form.addRegistryLink" label="www.registry.com" required />
                         <div class="centerbtn">
-                          <v-btn class="button" @click="createForm()">Create Site</v-btn>
+                          <v-btn class="button" >Create Site</v-btn>
                         </div>
                     </v-card-text>
                 </v-card>
@@ -24,7 +24,7 @@
 
 <script>
 export default {
-  name: 'FormPage',
+  name: 'LoginPage',
   middleware:[
     "lastRoute"
   ],
@@ -36,24 +36,6 @@ export default {
           addressTwo: '',
           addRegistryLink: ''
       }
-    }
-  },
-  methods:{
-    async createForm(){
-      const success = await this.$store
-            .dispatch("forms/setForm", {
-            coupleName: this.form.coupleName,
-            addressOne: this.form.addressOne,
-            addressTwo: this.form.addressTwo,
-            addRegistryLink: this.form.addRegistryLink
-        });
-        if (success === 'success'){
-            let theUsername = this.user.substring(1, (this.user.length - 1))
-            this.$router.push(`/home/${ theUsername }`)
-        }
-        else{
-            return false
-        }
     }
   },
   computed: {
