@@ -4,7 +4,6 @@ import axios from 'axios';
 export const state = () => {
     return {
         user: getUserFromCookie(),
-        content: {}
     }
 }
 
@@ -13,9 +12,6 @@ export const mutations = {
     setUser (state, user) {
         state.user = user
     },
-    setGuests(state, content){
-        state.content = content
-    }
 }
 
 //actions--------------------------------------------------------------
@@ -27,7 +23,6 @@ export const actions = {
             guestName,
             guestEmail
         })
-        console.log(res.status)
         if (res.status === 200) {
             return "success"
         }
@@ -37,19 +32,13 @@ export const actions = {
     },
     //deleteGuest
     async deleteGuest ({commit, state}, item){
-        const res = await axios.delete(`api/guests/${ item }`)
+        let theUsername = getUserFromCookie()
+        theUsername = theUsername.substring(1, (theUsername.length - 1))
+        const res = await axios.delete(`api/guests/${ item.guestEmail }`)
         if (res.status === 204) {
             commit('setUser', null)
         }
     },
-    async getGuests ({commit, state}, accountId){
-        const res = await axios.get(`/api/guests/${ accountId }`)
-        if (res.status === 200) {
-            commit('setGuests', res.data)
-            console.log("This One!: " + res)
-            return res.data.length
-        }
-    }
 }
 
 //Check if the user cookie is set and if so get the cookie value.

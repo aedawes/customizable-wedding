@@ -2,7 +2,7 @@
   <v-app light class="mainbody">
     <v-app-bar
       :clipped-left="clipped"
-      mainPink
+      color="mainPink"
       fixed
       app
       class="navbar"

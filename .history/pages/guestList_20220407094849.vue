@@ -16,8 +16,8 @@
                   hide-default-footer
                   class="elevation-5"
                 >
-              <template v-slot:item.actions="{ item }">
-                <v-btn icon @click="deleteGuest(item)">
+              <template>
+                <v-btn icon>
                   <v-icon>mdi-delete</v-icon>
                 </v-btn>
                 <!-- <v-btn>
@@ -71,8 +71,8 @@ export default {
               alert(this.form.guestName + " has been added to the list")
           }
         },
-        deleteGuest(item) {
-        this.$store.dispatch('guests/deleteGuest', item.guestemail)
+        deleteGuest (item) {
+        this.$store.dispatch('guests/deleteGuest', item)
         .catch(() => {
             alert("Delete Failed")
             console.error("Delete Failed")
@@ -84,6 +84,7 @@ export default {
           return this.$store.state.accounts.user
         },
         guestList(){
+            console.log(this.$store.state.guests.content)
             return this.$store.state.guests.content
         }
     }

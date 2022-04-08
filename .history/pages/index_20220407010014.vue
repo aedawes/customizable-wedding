@@ -11,9 +11,46 @@
     </v-row>
 
   </div>
+  <!-- <v-data-table
+                  striped
+                  :headers="headers"
+                  :items="items"
+                  :page.sync="page"
+                  hide-default-footer
+                  class="elevation-1"
+                >
+                  <template v-slot:item.actions="{ item }">
+                    <v-icon small class="mr-2" @click="editItem(item)"> mdi-pencil </v-icon>
+                    <v-icon small @click="deleteItem(item)"> mdi-delete </v-icon>
+                  </template>
+                </v-data-table> -->
 </template>
 
 <script>
+// data () {
+//       return {
+//         page: 1,
+
+//         //table
+//         headers: [
+//           {
+//             text: "Guests",
+//             align: "start",
+//             sortable: true,
+//             value: "guestName",
+//           },
+//           { text: "Emails", value: "guestEmail" },
+//           { text: "Actions", value: "actions", sortable: false },
+//         ],
+//         items: [],  //rows to be populated with
+
+//         //addGuestForm
+//         form: {
+//             guestName:'',
+//             guestEmail: ''
+//         }
+//       }
+//     },
 export default {
   name: 'IndexPage',
   data () {

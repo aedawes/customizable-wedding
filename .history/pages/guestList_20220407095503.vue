@@ -84,6 +84,7 @@ export default {
           return this.$store.state.accounts.user
         },
         guestList(){
+            console.log(this.$store.state.guests.content)
             return this.$store.state.guests.content
         }
     }

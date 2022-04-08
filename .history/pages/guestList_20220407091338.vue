@@ -11,18 +11,13 @@
             <v-data-table
                   striped
                   :headers="headers"
-                  :items="guestList"
+                  :items="items"
                   :page.sync="page"
                   hide-default-footer
                   class="elevation-5"
                 >
-              <template v-slot:item.actions="{ item }">
-                <v-btn icon @click="deleteGuest(item)">
-                  <v-icon>mdi-delete</v-icon>
-                </v-btn>
-                <!-- <v-btn>
-                  <v-icon small @click="deleteGuest(item)"> mdi-delete </v-icon>
-                </v-btn> -->
+              <template>
+                <v-icon small @click="deleteGuest(item)"> mdi-delete </v-icon>
               </template>
             </v-data-table>
         </v-card>
@@ -34,8 +29,8 @@
 <script>
 export default {
     name: 'IndexPage',
-    // Data () {
     async asyncData ({ params, store }) {
+    console.log(params)
     await store.dispatch('guests/getGuests', params.index)
     return {
         page: 1,
@@ -46,9 +41,9 @@ export default {
             text: "Guests",
             align: "start",
             sortable: true,
-            value: "guestname",
+            value: "guestName",
           },
-          { text: "Emails", value: "guestemail" },
+          { text: "Emails", value: "guestEmail" },
           { text: "Actions", value: "actions", sortable: false },
         ],
         items: [],  //rows to be populated with
@@ -62,17 +57,18 @@ export default {
     },
     methods: {
         async addGuest(){
-          const success = await this.$store
-              .dispatch(`guests/addGuest`, {
-              guestName: this.form.guestName,
-              guestEmail: this.form.guestEmail
-          });
-          if (success === 'success'){
-              alert(this.form.guestName + " has been added to the list")
-          }
+            console.log("here: " + this.form.guestName + " " + this.form.guestEmail)
+            const success = await this.$store
+                .dispatch(`guests/addGuest`, {
+                guestName: this.form.guestName,
+                guestEmail: this.form.guestEmail
+            });
+            if (success === 'success'){
+                alert(this.form.guestName + " has been added to the list")
+            }
         },
-        deleteGuest(item) {
-        this.$store.dispatch('guests/deleteGuest', item.guestemail)
+        deleteAccount (item) {
+        this.$store.dispatch('guests/deleteGuest', item)
         .catch(() => {
             alert("Delete Failed")
             console.error("Delete Failed")

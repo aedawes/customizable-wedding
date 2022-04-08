@@ -46,9 +46,8 @@ export const actions = {
         const res = await axios.get(`/api/guests/${ accountId }`)
         if (res.status === 200) {
             commit('setGuests', res.data)
-            console.log("This One!: " + res)
-            return res.data.length
         }
+        return res.data.length
     }
 }
 

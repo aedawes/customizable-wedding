@@ -46,7 +46,13 @@ export default {
         password: this.loginForm.password
       })
       .then(() => {
-        this.$router.push('/home/' + this.loginForm.username)
+
+          if(this.$store.dispatch('accounts/getHome', this.loginForm.username) == 0){
+            this.$router.push('/home/' + this.loginForm.username)
+          }
+          else{
+            this.$router.push('/form')
+          }
       })
       .catch(() => {
           console.error("Login Failed")

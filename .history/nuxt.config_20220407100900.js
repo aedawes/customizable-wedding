@@ -6,8 +6,8 @@ export default {
 
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    titleTemplate: '%s - customizable-wedding',
-    title: 'customizable-wedding',
+    titleTemplate: '%s - customizable wedding',
+    title: 'customizable wedding',
     htmlAttrs: {
       lang: 'en'
     },
@@ -50,13 +50,13 @@ export default {
       dark: true,
       themes: {
         dark: {
-          primary: colors.blue.darken2,
+          primary: pink,
           accent: colors.grey.darken3,
           secondary: colors.amber.darken3,
           info: colors.teal.lighten1,
           warning: colors.amber.base,
           error: colors.deepOrange.accent4,
-          success: colors.green.accent3
+          success: colors.green.accent3,
         }
       }
     }

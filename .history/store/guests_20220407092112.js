@@ -37,7 +37,9 @@ export const actions = {
     },
     //deleteGuest
     async deleteGuest ({commit, state}, item){
-        const res = await axios.delete(`api/guests/${ item }`)
+        let theUsername = getUserFromCookie()
+        theUsername = theUsername.substring(1, (theUsername.length - 1))
+        const res = await axios.delete(`api/guests/${ item.guestEmail }`)
         if (res.status === 204) {
             commit('setUser', null)
         }
@@ -46,8 +48,6 @@ export const actions = {
         const res = await axios.get(`/api/guests/${ accountId }`)
         if (res.status === 200) {
             commit('setGuests', res.data)
-            console.log("This One!: " + res)
-            return res.data.length
         }
     }
 }

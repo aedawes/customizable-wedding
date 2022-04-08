@@ -22,12 +22,12 @@ export const mutations = {
 export const actions = {
     //addGuest
     async addGuest ({commit, state}, { guestName, guestEmail}){
+        console.log("Here: " + guestName + " " + guestEmail)
         let theUsername = state.user.substring(1, (state.user.length - 1))
         const res = await axios.put('api/guests/' + theUsername + '/addguest', {
             guestName,
             guestEmail
         })
-        console.log(res.status)
         if (res.status === 200) {
             return "success"
         }
@@ -37,7 +37,9 @@ export const actions = {
     },
     //deleteGuest
     async deleteGuest ({commit, state}, item){
-        const res = await axios.delete(`api/guests/${ item }`)
+        let theUsername = getUserFromCookie()
+        theUsername = theUsername.substring(1, (theUsername.length - 1))
+        const res = await axios.delete(`api/guests/${ item.guestEmail }`)
         if (res.status === 204) {
             commit('setUser', null)
         }
@@ -46,8 +48,6 @@ export const actions = {
         const res = await axios.get(`/api/guests/${ accountId }`)
         if (res.status === 200) {
             commit('setGuests', res.data)
-            console.log("This One!: " + res)
-            return res.data.length
         }
     }
 }

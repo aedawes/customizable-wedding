@@ -72,6 +72,7 @@ export default {
           }
         },
         deleteGuest(item) {
+          console.log(item.guestemail)
         this.$store.dispatch('guests/deleteGuest', item.guestemail)
         .catch(() => {
             alert("Delete Failed")
@@ -84,6 +85,7 @@ export default {
           return this.$store.state.accounts.user
         },
         guestList(){
+            console.log(this.$store.state.guests.content)
             return this.$store.state.guests.content
         }
     }

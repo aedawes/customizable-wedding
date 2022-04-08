@@ -40,13 +40,19 @@ export default {
         this.$router.push(this.$store.getters['routeHistory/last'])
     },
     login () {
-      console.log("This One: " + this.$store.dispatch('accounts/getHome', this.loginForm.username))
+      console.log(this.$store.dispatch('accounts/getHome', this.loginForm.username))
       this.$store.dispatch('accounts/login', {
         username: this.loginForm.username,
         password: this.loginForm.password
       })
       .then(() => {
-        this.$router.push('/home/' + this.loginForm.username)
+
+          if(this.$store.dispatch('accounts/getHome', this.loginForm.username) == 0){
+            this.$router.push('/home/' + this.loginForm.username)
+          }
+          else{
+            this.$router.push('/form')
+          }
       })
       .catch(() => {
           console.error("Login Failed")
