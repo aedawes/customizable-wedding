@@ -1,0 +1,70 @@
+<template>
+  <div class="main">
+        <div class="nameSection">
+          <h1> {{ home.coupleName }} </h1>
+        </div>
+        <!-- <v-card elevation="5" class="card">
+            <v-card-text justify="center">
+                <p> Name: {{ home.coupleName }} </p>
+                <p> Address One: {{ home.addressOne }} </p>
+                <p> Address Two: {{ home.addressTwo }} </p>
+            </v-card-text>
+        </v-card> -->
+  </div>
+</template>
+
+<script>
+export default {
+  name: 'Home',
+  async asyncData ({ params, store }) {
+    console.log(params)
+    await store.dispatch('accounts/getHome', params.index)
+    return {
+        form:{
+            coupleName: '',
+
+        }
+    }
+  },
+  computed:{
+      home(){
+          return this.$store.state.accounts.content
+      }
+  }
+}
+</script>
+
+<style scoped>
+  .main{
+    text-align: center !important;
+    width: 100px !important;
+  }
+
+  .Welcome {
+    font-size: 100px !important;
+    text-align: center;
+  }
+
+  .subIntro {
+    font-size: 30px !important;
+    margin: 20px;
+    margin-bottom: 50px;
+  }
+
+  .buttons {
+    border-radius: 15px;
+    height: 75px !important;
+    width: 225px;
+    margin: 20px;
+    background-color: #C89D83 !important;
+    font-size: 15px;
+    color: #F5F4F0;
+  }
+
+  .nameSection{
+    background-image: url(../../images/Flowers.png);
+    height: 1100px;
+    width: 1100px;
+    top: -100px;
+  }
+</style>
