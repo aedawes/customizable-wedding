@@ -42,6 +42,13 @@
     "_name": "_4398512e"
   },
   {
+    "name": "updateForm",
+    "path": "/updateForm",
+    "component": "/Users/eAnaisDawes/Documents/BYU classes/BYUWinter2022/itc410/customizable-wedding/pages/updateForm.vue",
+    "chunkName": "pages/updateForm",
+    "_name": "_46cb8c90"
+  },
+  {
     "name": "home",
     "path": "/home/:index",
     "component": "/Users/eAnaisDawes/Documents/BYU classes/BYUWinter2022/itc410/customizable-wedding/pages/home/_index.vue",

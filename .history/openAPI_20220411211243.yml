@@ -1,0 +1,327 @@
+openapi: 3.0.3
+info:
+  title: Cutomizable Wedding Web App
+  version: v1
+paths:
+  /accounts:
+    x-controller: accounts
+    post:
+      x-operation: createAccount
+      tags:
+        - Accounts
+      summary: Create an account
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - username
+                - password
+              properties:
+                username:
+                  type: string
+                password:
+                  type: string
+            example:
+              username: aedawes
+              password: secretPassword
+      responses:
+        201:
+          description: Account created
+  /accounts/{username}:
+    x-controller: accounts
+    parameters:
+      - name: username
+        in : path
+        required: true
+        schema: 
+          type: string
+    put:
+      x-operation: updateAccount
+      tags:
+        - Accounts
+      security:
+        - cookieAuth: []
+      summary: Update the Account
+      requestBody:
+        required: true
+        content: 
+          application/json:
+            schema:
+              type: object
+              required:
+                - username
+              properties:
+                username: 
+                  type: string
+            example: 
+              username: aedawes
+      responses:
+        200:
+          description: Account is updated.
+        401:
+          description: Not authenticated.
+        403:
+          description: Access denied.
+        404:
+          description: No page found.
+    delete:
+      x-operation: deleteAccount
+      tags: 
+        - Accounts
+      security:
+        - cookieAuth: []
+      summary: Delete an account.
+      responses:
+        204:
+          description: Account deleted
+  /authentication/login:
+    x-controller: authentication
+    put: 
+      x-operation: login
+      tags:
+        - Authentication
+      summary: Log into an account
+      requestBody:
+        required: true
+        content: 
+          application/json:
+            schema:
+              type: object
+              required:
+                - username
+                - password
+              properties:
+                username: 
+                  type: string
+                password: 
+                  type: string
+            example: 
+              username: aedawess
+              password: superSecretPassword
+      responses:
+        200:
+          description: User is logged in
+        401:
+          description: Not authenticated.
+        403:
+          description: Access denied.
+        404:
+          description: No page found.
+  /authentication/logout:
+    x-controller: authentication
+    put:
+      x-operation: logout
+      tags:
+        - Authentication
+      security:
+        - cookieAuth: []
+      summary: Log out of an account
+      responses:
+        200:
+          description: User is logged out
+        403: 
+          description: access denied
+  /home/{username}:
+    x-controller: accounts
+    parameters:
+      - $ref: '#/components/parameters/PathUsername'
+    get:
+      x-operation: getHome
+      tags:
+        - Accounts
+      summary: Get the home page
+      responses:
+        200:
+          description: Home page loaded.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Home'
+        401:
+          description: Not authenticated.
+        403:
+          description: Access denied.
+        404:
+          description: No page found.
+  /forms:
+    x-controller: forms
+    put:
+      x-operation: updateForm
+      security:
+        - cookieAuth: []
+      tags:
+        - Forms
+      summary: Update the form
+      requestBody:
+        required: true
+        content: 
+          application/json:
+          # multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Home'
+            example: 
+              coupleName: John, Sarah, Smith
+              # couplePhotoOne: UGxhY2Vob2xkZXIK
+              addressOne: The venue, 123 Sesame st
+              # addressOnePhoto: UGxhY2Vob2xkZXIK
+              addressTwo: The venue, 456 hilltop rd
+              # addressTwoPhoto: UGxhY2Vob2xkZXIK
+              # couplePhotoTwo: UGxhY2Vob2xkZXIK
+              addRegistryLink: www.website.com/ourRegistry
+      responses:
+        200:
+          description: Form succesfully added.
+        401:
+          description: Not authenticated.
+        403:
+          description: Access denied.
+        409:
+          description: Already Created.
+  /guests/{username}:
+    x-controller: guests
+    parameters:
+      - $ref: '#/components/parameters/PathUsername'
+    get:
+      x-operation: getGuests
+      tags:
+        - Guests
+      summary: Get the guest list
+      responses:
+        200:
+          description: Guest list loaded.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Guests'
+        401:
+          description: Not authenticated.
+        403:
+          description: Access denied.
+        404:
+          description: No page found.
+  /guests/{guestEmail}:
+    x-controller: guests
+    parameters:
+      - $ref: '#/components/parameters/PathEmail'
+    delete:
+      x-operation: deleteGuest
+      security:
+        - cookieAuth: []
+      tags: 
+        - Guests
+      summary: Delete a guest.
+      responses:
+        204:
+          description: Guest deleted
+        401:
+          description: Not authenticated.
+        403:
+          description: Access denied.
+        404:
+          description: Guest not found
+  /guests/{username}/addguest:
+    x-controller: guests
+    parameters:
+      - name: username
+        in : path
+        required: true
+        schema: 
+          type: string
+    put:
+      x-operation: addGuest
+      tags: 
+        - Guests
+      summary: Add a guest to the list
+      requestBody:
+        required: true
+        content: 
+          application/json:
+            schema:
+              type: object
+              required:
+                - guestName
+                - guestEmail
+              properties:
+                guestName: 
+                  type: string
+                guestEmail: 
+                  type: string
+            example: 
+              guestName: John Smith
+              guestEmail: foo@mail.com
+      responses:
+        200:
+          description: Guest successfully added to the list
+        401:
+          description: Not authenticated.
+        403:
+          description: Access denied.   
+components:
+  parameters:
+    PathUsername:
+      name: username
+      in: path
+      required: true
+      schema:
+        type: string
+    PathEmail:
+      name: guestEmail
+      in: path
+      required: true
+      schema:
+        type: string
+  schemas:
+    Home:
+      type: object
+      required:
+        - coupleName
+        # - couplePhotoOne
+        - addressOne
+        - addressTwo
+        # - addressOnePhoto
+        # - couplePhotoTwo
+        - addRegistryLink
+      properties:
+        accountId:
+          type: string
+        coupleName: 
+          type: string
+        # couplePhotoOne: 
+        #   type: string
+        #   format: byte
+        addressOne:
+          type: string
+        # addressOnePhoto:
+        #   type: string
+        #   format: byte
+        addressTwo:
+          type: string
+        # addressTwoPhoto:
+        #   type: string
+        #   format: byte
+        # couplePhotoTwo:
+        #   type: string
+        #   format: byte
+        addRegistryLink:
+          type: string
+    Guests:
+      type: array
+      items:
+        $ref: '#/components/schemas/Guest'
+    Guest:
+      type: object
+      properties:
+        accountId:
+          type: string
+        guestName: 
+          type: string
+        guestEmail:
+          type: string
+  securitySchemes:
+    cookieAuth:
+      type: apiKey
+      in: cookie
+      name: SessionId 

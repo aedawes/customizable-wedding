@@ -10,6 +10,7 @@ const _f67eefe2 = () => interopDefault(import('../pages/form.vue' /* webpackChun
 const _0a0d0b5b = () => interopDefault(import('../pages/guestList.vue' /* webpackChunkName: "pages/guestList" */))
 const _40a97cdf = () => interopDefault(import('../pages/inspire.vue' /* webpackChunkName: "pages/inspire" */))
 const _4398512e = () => interopDefault(import('../pages/login.vue' /* webpackChunkName: "pages/login" */))
+const _46cb8c90 = () => interopDefault(import('../pages/updateForm.vue' /* webpackChunkName: "pages/updateForm" */))
 const _4c4443f0 = () => interopDefault(import('../pages/home/_index.vue' /* webpackChunkName: "pages/home/_index" */))
 const _79f0ae17 = () => interopDefault(import('../pages/index.vue' /* webpackChunkName: "pages/index" */))
 
@@ -48,6 +49,10 @@ export const routerOptions = {
     path: "/login",
     component: _4398512e,
     name: "login"
+  }, {
+    path: "/updateForm",
+    component: _46cb8c90,
+    name: "updateForm"
   }, {
     path: "/home/:index",
     component: _4c4443f0,
